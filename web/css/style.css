@@ -1,0 +1,18 @@
+body {
+    background: #b21f2d;
+}
+
+#principal {
+    background: #9fcdff;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+#menu li a:hover {
+    background: white;
+    color: blue;
+}
+
+#formdiv {
+    padding-top: 100px;
+}
