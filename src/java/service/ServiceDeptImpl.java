@@ -19,6 +19,7 @@ public class ServiceDeptImpl implements ServiceDept {
     private static final String SQL_LIST_DEPT = "SELECT * FROM `departement` d, `ufr` u WHERE d.ID_UFR = u.ID_UFR";
     private static final String SQL_MOD_DEP = "UPDATE `departement` SET `ID_UFR`=?,`NOM_DEPT`=? WHERE `ID_DEPT`=?";
     private static final String SQL_FIND_DEP = "SELECT * FROM `departement` d, `ufr` u WHERE d.ID_UFR = u.ID_UFR AND `ID_DEPT`=?";
+    private static final String SQL_DEL_DEP = "DELETE FROM `departement` WHERE `ID_DEPT` = ?";
 
     @Override
     public String ajouterDep(Departement dept) {
@@ -122,5 +123,30 @@ public class ServiceDeptImpl implements ServiceDept {
         return dept;
 
     }
+
+    @Override
+    public String supprimer(int id) {
+        Connection db = null;
+        PreparedStatement ps = null;
+        String message = null;
+        try {
+            db = Connexion.getConnection();
+            ps = db.prepareStatement(SQL_DEL_DEP);
+            ps.setInt(1, id);
+
+            int statut = ps.executeUpdate();
+
+            if (statut == 1) {
+                message = "reussi";
+            } else {
+                message = "echec";
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return message;
+    }
+    
+    
 
 }

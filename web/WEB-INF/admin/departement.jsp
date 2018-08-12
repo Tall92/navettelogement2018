@@ -22,13 +22,14 @@
                                 <tr>                            
                                     <th>Nom du Département</th>
                                     <th>Nom de l'UFR</th>
-                                    <th colspan="1">Action</th>
+                                    <th colspan="2">Action</th>
                                 </tr>
                                 <c:forEach items="${depts}" var="d">
                                     <tr>
                                         <td><c:out value="${d.nomDept}" /></td>
                                         <td><c:out value="${d.ufr.nomUfr}" /></td>
                                         <td><a class="btn btn-primary" href="controleurdept?action=admin_modifier&iddep=${d.idDept}"><i class="fa fa-edit fa-2x"></i></a></td>
+                                        <td><a class="btn btn-primary" href="controleurdept?action=admin_supprimer&iddep=${d.idDept}"><i class="fa fa-remove fa-2x"></i></a></td>
 
                                     </tr>
                                 </c:forEach>

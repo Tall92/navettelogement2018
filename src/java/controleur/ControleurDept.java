@@ -60,6 +60,21 @@ public class ControleurDept extends HttpServlet {
             request.setAttribute("objet", "modifier");
 
             this.getServletContext().getRequestDispatcher("/WEB-INF/admin/departement.jsp").forward(request, response);
+        } else if (action.equals("admin_supprimer")) {
+
+            String d = request.getParameter("iddep");
+
+            int id = Integer.parseInt(d);
+
+            String message = sd.supprimer(id);
+
+            List<Ufr> ufrs = su.listeUfr();
+            List<Departement> depts = sd.listeDep();
+
+            request.setAttribute("depts", depts);
+            request.setAttribute("ufrs", ufrs);
+
+            this.getServletContext().getRequestDispatcher("/WEB-INF/admin/departement.jsp").forward(request, response);
         }
 
     }

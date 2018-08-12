@@ -12,5 +12,7 @@ public interface ServiceDept {
     public String modifierDep(Departement dept);
 
     public Departement rechercherDept(int iddept);
+    
+    public String supprimer(int id);
 
 }
