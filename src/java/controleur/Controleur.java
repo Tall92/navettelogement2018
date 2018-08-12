@@ -17,6 +17,7 @@ public class Controleur extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String action = request.getParameter("action");
+        System.out.println("Bonjour");
         if (action == null) {
             this.getServletContext().getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
         } 
