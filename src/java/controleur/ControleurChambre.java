@@ -66,26 +66,55 @@ public class ControleurChambre extends HttpServlet {
                 if (!numero.equals("") && !site.equals("")) {
 
                     Chambre c = new Chambre(new Site(id), numero);
-                    
+
                     sc.ajouter(c);
-                    
+
                 }
 
                 List<Chambre> chambres = sc.listeChambres();
                 List<Site> sites = ss.listeSite();
 
-                
                 request.setAttribute("chambres", chambres);
                 request.setAttribute("sites", sites);
 
                 this.getServletContext().getRequestDispatcher("/WEB-INF/admin/chambre.jsp").forward(request, response);
 
             } else if (action.equals("modifier")) {
+//                String dept = request.getParameter("i");
+//
+//                int iddep = Integer.parseInt(dept);
+//
+//                String nomDep = request.getParameter("nomDep");
+//
+//                String ufr = request.getParameter("ufr");
+//
+//                int id = Integer.parseInt(ufr);
+//
+//                if (!nomDep.equals("") && !dept.equals("")) {
+//                    
+//                    System.out.println("bonjour");
+//
+//                    Departement a = new Departement();
+//                    a.setIdDept(iddep);
+//                    a.setUfr(new Ufr(id, ""));
+//                    a.setNomDept(nomDep);
+//
+//                    String message = sd.modifierDep(a);
+//                }
+//
+//                List<Departement> depts = sd.listeDep();
+//
+//                List<Ufr> ufrs = su.listeUfr();
+//                request.setAttribute("depts", depts);
+//
+//                request.setAttribute("ufrs", ufrs);
+//
+//                this.getServletContext().getRequestDispatcher("/WEB-INF/admin/departement.jsp").forward(request, response);
 
-                
             }
 
         }
-    }
 
+    }
 }
+
