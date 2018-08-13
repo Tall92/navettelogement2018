@@ -55,8 +55,8 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="ges">GESTIONNAIRE</label>
-                                    <select name="gestion" class="form-control">
-                                        <option></option>
+                                    <select name="gestion" class="form-control" id="ges">
+                                        <option value="${site.ges.ges}">${site.ges.prenom} ${site.ges.nom}</option>
                                         <c:forEach items="${gestions}" var="g">
                                             <option value="${g.ges}">${g.prenom} ${g.nom}</option>
                                         </c:forEach>

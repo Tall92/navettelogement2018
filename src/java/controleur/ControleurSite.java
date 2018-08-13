@@ -77,18 +77,16 @@ public class ControleurSite extends HttpServlet {
                 String gestion = request.getParameter("gestion");
 
                 int id = Integer.parseInt(gestion);
-                
+
                 if (!nomSite.equals("") && !gestion.equals("")) {
 
                     Site s = new Site();
                     s.setGes(new Gestionnaire(id));
                     s.setNomSite(nomSite);
-                    
-                    
+
                     String message = si.ajouterSite(s);
                 }
-                
-                
+
                 List<Site> sites = si.listeSite();
 
                 List<Gestionnaire> gestions = sg.listeGestion();
@@ -99,23 +97,21 @@ public class ControleurSite extends HttpServlet {
 
             } else if (action.equals("modifier")) {
 
-                String site = request.getParameter("site");
+                String site = request.getParameter("idsite");
 
                 int idsite = Integer.parseInt(site);
 
                 String nomSite = request.getParameter("nomSite");
 
-                String gestions = request.getParameter("gestion");
+                String gestion = request.getParameter("gestion");
 
-                int id = Integer.parseInt(gestions);
+                int id = Integer.parseInt(gestion);
 
                 if (!nomSite.equals("") && !site.equals("")) {
 
-                    System.out.println("bonjour");
-
                     Site a = new Site();
                     a.setSit(idsite);
-                    a.setGes(new Gestionnaire(id, "", "", "", ""));
+                    a.setGes(new Gestionnaire(id));
                     a.setNomSite(nomSite);
 
                     String message = si.modifierSite(a);
@@ -123,10 +119,11 @@ public class ControleurSite extends HttpServlet {
 
                 List<Site> sites = si.listeSite();
 
-                List<Gestionnaire> gestion = sg.listeGestion();
-                request.setAttribute("site", sites);
+                List<Gestionnaire> gestions = sg.listeGestion();
+                
+                request.setAttribute("sites", sites);
 
-                request.setAttribute("gestion", gestion);
+                request.setAttribute("gestions", gestions);
 
                 this.getServletContext().getRequestDispatcher("/WEB-INF/admin/site.jsp").forward(request, response);
 
