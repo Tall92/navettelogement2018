@@ -5,7 +5,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>UTILISATEUR</title>
+        <title>ENSEIGNANT</title>
         <jsp:include page="style.jsp" />
     </head>
     <body>
@@ -41,7 +41,7 @@
                                         <td><c:out value="${us.ufr.nomUfr}" /></td>
                                         <td><c:out value="${us.dept.nomDept}" /></td>
                                         <td><c:out value="${us.profil}" /></td>
-                                        <td><a class="btn btn-primary" href="controleurutilisateur?action=admin_modifier&iduser=${us.idUser}"><i class="fa fa-edit fa-2x"></i></a></td>
+                                        <td><a class="btn btn-primary" href="controleurenseignant?action=admin_modifier&iduser=${us.idUser}"><i class="fa fa-edit fa-2x"></i></a></td>
 
                                     </tr>
                                 </c:forEach>
@@ -55,7 +55,7 @@
                     <div class="card">
                         <div class="card-header bg-primary">NOUVEL ENSEIGNANT</div>
                         <div class="card-body">
-                            <form action="controleurutilisateur" method="post">
+                            <form action="controleurenseignant" method="post">
 
                                 <input type="hidden" name="action" value="${objet != null ? objet : 'ajouter'}" />
                                 <input type="hidden" name="idUser" value="${user.idUser}" />
