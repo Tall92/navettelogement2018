@@ -38,21 +38,20 @@ public class ControleurNavette extends HttpServlet {
             this.getServletContext().getRequestDispatcher("/WEB-INF/admin/navette.jsp").forward(request, response);
 
         } else if (action.equals("admin_modifier")) {
-            String matricule = request.getParameter("matricule");
             
-             String nav = request.getParameter("nav");
-             
+            String nav = request.getParameter("idnav");
+
             int idNav = Integer.parseInt(nav);
 
-          Navette nave = sn.rechercherNavette(idNav);
+            Navette navette = sn.rechercherNavette(idNav);
 
-            List<Navette> naves = sn.listeNavettes();
+            List<Navette> navettes = sn.listeNavettes();
 
-            request.setAttribute("naves", naves);
+            request.setAttribute("navettes", navettes);
 
             request.setAttribute("objet", "modifier");
 
-            request.setAttribute("nave", nave);
+            request.setAttribute("navette", navette);
 
             this.getServletContext().getRequestDispatcher("/WEB-INF/admin/navette.jsp").forward(request, response);
         }
@@ -88,25 +87,29 @@ public class ControleurNavette extends HttpServlet {
                 this.getServletContext().getRequestDispatcher("/WEB-INF/admin/navette.jsp").forward(request, response);
 
             } else if (action.equals("modifier")) {
+                
                 String nav = request.getParameter("nav");
 
                 String matricule = request.getParameter("matricule");
 
                 String place = request.getParameter("place");
+                
+                int nbre = Integer.parseInt(place);
 
-                int id = Integer.parseInt(matricule);
+                int id = Integer.parseInt(nav);
 
-                if (!matricule.equals("")) {
+                if (!matricule.equals("") && !place.equals("")) {
 
                     Navette a = new Navette();
                     a.setIdNav(id);
                     a.setMatricule(matricule);
+                    a.setNbPlace(nbre);
 
                     String message = sn.modifierNavette(a);
                 }
 
-                List<Navette> naves = sn.listeNavettes();
-                request.setAttribute("naves", naves);
+                List<Navette> navettes = sn.listeNavettes();
+                request.setAttribute("navettes", navettes);
 
                 this.getServletContext().getRequestDispatcher("/WEB-INF/admin/navette.jsp").forward(request, response);
 

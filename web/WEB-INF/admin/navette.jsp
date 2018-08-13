@@ -45,14 +45,14 @@
                         <div class="card-body">
                             <form action="controleurnavette" method="post">
                                 <input type="hidden" name="action" value="${objet != null ? objet : 'ajouter'}" />
-                                <input type="hidden" name="nav" value="${nav.idNav}" />
+                                <input type="hidden" name="nav" value="${navette.idNav}" />
                                 <div class="form-group">
                                     <label for="matricule">Numéro de Matricule</label>
-                                    <input type="text" name="matricule" value="${nav.matricule}" class="form-control" id="matricule" placeholder="Entrer le numéro du matricule">
+                                    <input type="text" name="matricule" value="${navette.matricule}" class="form-control" id="matricule" placeholder="Entrer le numéro du matricule">
                                 </div>
                                 <div class="form-group">
                                     <label for="place">Nombres de Place</label>
-                                    <input type="text" name="place" value="${nav.nbPlace}" class="form-control" id="place" placeholder="Entrer le nombre de place">
+                                    <input type="text" name="place" value="${navette.nbPlace}" class="form-control" id="place" placeholder="Entrer le nombre de place">
                                 </div>
 
                                 <button type="submit" class="btn btn-primary">${objet != null ? 'Modifier' : 'Ajouter'}</button>
