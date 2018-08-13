@@ -30,6 +30,7 @@
                                         <td><c:out value="${n.nbPlace}" /></td>
                                         
                                         <td><a class="btn btn-primary" href="controleurnavette?action=admin_modifier&idnav=${n.idNav}"><i class="fa fa-edit fa-2x"></i></a></td>
+                                        <td><a class="btn btn-primary" href="controleurnavette?action=admin_supprimer&idnav=${n.idNav}"><i class="fa fa-remove fa-2x"></i></a></td>
 
                                     </tr>
                                 </c:forEach>

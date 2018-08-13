@@ -19,4 +19,5 @@ public interface ServiceNavette {
     public List<Navette> listeNavettes();
     public String modifierNavette(Navette n);
       public Navette rechercherNavette(int idNav);
+      public String supprimer(int id);
 }

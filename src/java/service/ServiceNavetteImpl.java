@@ -18,6 +18,7 @@ public class ServiceNavetteImpl implements ServiceNavette {
     private static final String SQL_SEL = "SELECT * FROM `navette`";
     private static final String SQL_MOD_NAV = "UPDATE `navette` SET `MATRICULE`=?, `NB_PLACE` =? WHERE `ID_NAVETTE`=?";
     private static final String SQL_FIND_NAV = "SELECT * FROM `navette` WHERE `ID_NAVETTE`=?";
+     private static final String SQL_DEL = "DELETE FROM `navette` WHERE `ID_NAVETTE` = ?";
     
     @Override
     public String ajouterNav(Navette n) {
@@ -114,5 +115,29 @@ public class ServiceNavetteImpl implements ServiceNavette {
         }
         return nav;
     }
+
+    @Override
+    public String supprimer(int id) {
+        Connection db = null;
+        PreparedStatement ps = null;
+        String message = null;
+        try {
+            db = Connexion.getConnection();
+            ps = db.prepareStatement(SQL_DEL);
+            ps.setInt(1, id);
+
+            int statut = ps.executeUpdate();
+
+            if (statut == 1) {
+                message = "reussi";
+            } else {
+                message = "echec";
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return message;
+    }
+    
     
 }

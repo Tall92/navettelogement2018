@@ -38,7 +38,7 @@ public class ControleurNavette extends HttpServlet {
             this.getServletContext().getRequestDispatcher("/WEB-INF/admin/navette.jsp").forward(request, response);
 
         } else if (action.equals("admin_modifier")) {
-            
+
             String nav = request.getParameter("idnav");
 
             int idNav = Integer.parseInt(nav);
@@ -52,6 +52,22 @@ public class ControleurNavette extends HttpServlet {
             request.setAttribute("objet", "modifier");
 
             request.setAttribute("navette", navette);
+
+            this.getServletContext().getRequestDispatcher("/WEB-INF/admin/navette.jsp").forward(request, response);
+        } else if (action.equals("admin_supprimer")) {
+        String matricule=request.getParameter("matricule");
+        String place = request.getParameter("place");
+            String nav = request.getParameter("nav");
+
+            int id = Integer.parseInt(nav);
+
+            sn.supprimer(id);
+
+            List<Navette> naves = sn.listeNavettes();
+
+            request.setAttribute("naves", naves);
+            request.setAttribute("matricule", matricule);
+            request.setAttribute("place", place);
 
             this.getServletContext().getRequestDispatcher("/WEB-INF/admin/navette.jsp").forward(request, response);
         }
@@ -87,13 +103,13 @@ public class ControleurNavette extends HttpServlet {
                 this.getServletContext().getRequestDispatcher("/WEB-INF/admin/navette.jsp").forward(request, response);
 
             } else if (action.equals("modifier")) {
-                
+
                 String nav = request.getParameter("nav");
 
                 String matricule = request.getParameter("matricule");
 
                 String place = request.getParameter("place");
-                
+
                 int nbre = Integer.parseInt(place);
 
                 int id = Integer.parseInt(nav);
