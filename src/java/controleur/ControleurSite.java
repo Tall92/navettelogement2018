@@ -116,6 +116,11 @@ public class ControleurSite extends HttpServlet {
 
                     String message = si.modifierSite(a);
                 }
+                
+                
+                
+                
+                
 
                 List<Site> sites = si.listeSite();
 
