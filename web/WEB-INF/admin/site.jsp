@@ -48,7 +48,7 @@
                         <div class="card-body">
                             <form action="controleursite" method="post">
                                 <input type="hidden" name="action" value="${objet != null ? objet : 'ajouter'}" />
-                                <input type="hidden" name="site" value="${site.sit}" />
+                                <input type="hidden" name="idsite" value="${site.sit}" />
                                 <div class="form-group">
                                     <label for="site">NOM DE SITE</label>
                                     <input type="text" name="nomSite" value="${site.nomSite}" class="form-control" id="site" placeholder="Entrer le nom du site">

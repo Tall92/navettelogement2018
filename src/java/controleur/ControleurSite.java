@@ -42,9 +42,9 @@ public class ControleurSite extends HttpServlet {
             this.getServletContext().getRequestDispatcher("/WEB-INF/admin/site.jsp").forward(request, response);
         } else if (action.equals("admin_modifier")) {
 
-            String d = request.getParameter("iddep");
+            String s = request.getParameter("idsite");
 
-            int id = Integer.parseInt(d);
+            int id = Integer.parseInt(s);
 
             Site site = si.rechercherSite(id);
 
