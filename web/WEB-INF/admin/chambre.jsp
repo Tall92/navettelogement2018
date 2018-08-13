@@ -45,15 +45,15 @@
                         <div class="card-body">
                             <form action="controleurchambre" method="post">
                                 <input type="hidden" name="action" value="${objet != null ? objet : 'ajouter'}" />
-                                <input type="hidden" name="site" value="${ch.idCh}" />
+                                <input type="hidden" name="site" value="${chambre.idCh}" />
                                 <div class="form-group">
                                     <label for="cham">Numéro de la chambre</label>
-                                    <input type="text" name="numero" value="${site.nomSite}" class="form-control" id="cham" placeholder="Entrer le nom du site">
+                                    <input type="text" name="numero" value="${chambre.numero}" class="form-control" id="cham" placeholder="Entrer le nom du site">
                                 </div>
                                 <div class="form-group">
                                     <label for="ges">SITE</label>
                                     <select name="nomsite" class="form-control">
-                                        <option></option>
+                                        <option value="${chambre.site.sit}">${chambre.site.nomSite}</option>
                                         <c:forEach items="${sites}" var="s">
                                             <option value="${s.sit}">${s.nomSite}</option>
                                         </c:forEach>

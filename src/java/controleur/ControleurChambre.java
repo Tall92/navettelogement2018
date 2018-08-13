@@ -43,6 +43,22 @@ public class ControleurChambre extends HttpServlet {
             this.getServletContext().getRequestDispatcher("/WEB-INF/admin/chambre.jsp").forward(request, response);
 
         } else if (action.equals("admin_modifier")) {
+            
+            String d = request.getParameter("idcham");
+
+            int id = Integer.parseInt(d);
+
+            Chambre c = sc.rechercher(id);
+
+            List<Chambre> chambres = sc.listeChambres();
+            List<Site> sites = ss.listeSite();
+
+            request.setAttribute("chambres", chambres);
+            request.setAttribute("sites", sites);
+
+            request.setAttribute("chambre", c);
+
+            request.setAttribute("objet", "modifier");
 
             this.getServletContext().getRequestDispatcher("/WEB-INF/admin/chambre.jsp").forward(request, response);
         }
