@@ -1,4 +1,3 @@
-
 package service;
 
 import java.sql.Connection;
@@ -17,9 +16,9 @@ public class ServiceNavetteImpl implements ServiceNavette {
     
     private static final String SQL_ADD_NAV = "INSERT INTO `navette`(`MATRICULE`, `NB_PLACE`) VALUES (?, ?)";
     private static final String SQL_SEL = "SELECT * FROM `navette`";
-    private static final String SQL_MOD_NAV = "UPDATE `navette` SET `MATRICULE`=? WHERE `ID_NAVETTE`=?";
-     private static final String SQL_FIND_NAV = "SELECT * FROM `navette` WHERE `ID_NAVETTE`=?";
-
+    private static final String SQL_MOD_NAV = "UPDATE `navette` SET `MATRICULE`=?, `NB_PLACE` =? WHERE `ID_NAVETTE`=?";
+    private static final String SQL_FIND_NAV = "SELECT * FROM `navette` WHERE `ID_NAVETTE`=?";
+    
     @Override
     public String ajouterNav(Navette n) {
         Connection db = null;
@@ -32,7 +31,7 @@ public class ServiceNavetteImpl implements ServiceNavette {
             ps.setInt(2, n.getNbPlace());
             
             int statut = ps.executeUpdate();
-
+            
             if (statut == 1) {
                 message = "reussi";
             } else {
@@ -43,7 +42,7 @@ public class ServiceNavetteImpl implements ServiceNavette {
         }
         return message;
     }
-
+    
     @Override
     public List<Navette> listeNavettes() {
         Connection db = null;
@@ -62,15 +61,15 @@ public class ServiceNavetteImpl implements ServiceNavette {
                 
                 navettes.add(n);
             }
-
+            
         } catch (SQLException e) {
         }
         return navettes;
     }
-
+    
     @Override
     public String modifierNavette(Navette n) {
-         Connection db = null;
+        Connection db = null;
         PreparedStatement ps = null;
         String message = null;
         try {
@@ -78,8 +77,9 @@ public class ServiceNavetteImpl implements ServiceNavette {
             ps = db.prepareStatement(SQL_MOD_NAV);
             ps.setString(1, n.getMatricule());
             ps.setInt(2, n.getNbPlace());
+            ps.setInt(3, n.getIdNav());
             int statut = ps.executeUpdate();
-
+            
             if (statut == 1) {
                 message = "réussi";
             } else {
@@ -90,13 +90,13 @@ public class ServiceNavetteImpl implements ServiceNavette {
         }
         return message;
     }
-
+    
     @Override
     public Navette rechercherNavette(int idNav) {
         Connection db = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
-
+        
         Navette nav = null;
         try {
             db = Connexion.getConnection();
@@ -107,9 +107,9 @@ public class ServiceNavetteImpl implements ServiceNavette {
                 nav = new Navette();
                 nav.setIdNav(rs.getInt("ID_NAVETTE"));
                 nav.setMatricule(rs.getString("MATRICULE"));
-
+                nav.setNbPlace(rs.getInt("NB_PLACE"));
             }
-
+            
         } catch (SQLException e) {
         }
         return nav;
