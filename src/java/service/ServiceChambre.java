@@ -17,4 +17,7 @@ public interface ServiceChambre {
     public String ajouter(Chambre c);
 
     public List<Chambre> listeChambres();
+    public String modifierChambre(Chambre cha);
+        
+   
 }
