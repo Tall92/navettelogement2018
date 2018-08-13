@@ -45,7 +45,7 @@
                         <div class="card-body">
                             <form action="controleurchambre" method="post">
                                 <input type="hidden" name="action" value="${objet != null ? objet : 'ajouter'}" />
-                                <input type="hidden" name="site" value="${chambre.idCh}" />
+                                <input type="hidden" name="chambre" value="${chambre.idCh}" />
                                 <div class="form-group">
                                     <label for="cham">Numéro de la chambre</label>
                                     <input type="text" name="numero" value="${chambre.numero}" class="form-control" id="cham" placeholder="Entrer le nom du site">

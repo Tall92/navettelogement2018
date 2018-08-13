@@ -96,36 +96,32 @@ public class ControleurChambre extends HttpServlet {
                 this.getServletContext().getRequestDispatcher("/WEB-INF/admin/chambre.jsp").forward(request, response);
 
             } else if (action.equals("modifier")) {
-//                String dept = request.getParameter("i");
-//
-//                int iddep = Integer.parseInt(dept);
-//
-//                String nomDep = request.getParameter("nomDep");
-//
-//                String ufr = request.getParameter("ufr");
-//
-//                int id = Integer.parseInt(ufr);
-//
-//                if (!nomDep.equals("") && !dept.equals("")) {
-//                    
-//                    System.out.println("bonjour");
-//
-//                    Departement a = new Departement();
-//                    a.setIdDept(iddep);
-//                    a.setUfr(new Ufr(id, ""));
-//                    a.setNomDept(nomDep);
-//
-//                    String message = sd.modifierDep(a);
-//                }
-//
-//                List<Departement> depts = sd.listeDep();
-//
-//                List<Ufr> ufrs = su.listeUfr();
-//                request.setAttribute("depts", depts);
-//
-//                request.setAttribute("ufrs", ufrs);
-//
-//                this.getServletContext().getRequestDispatcher("/WEB-INF/admin/departement.jsp").forward(request, response);
+                
+                String chambre = request.getParameter("chambre");
+
+                int idcham = Integer.parseInt(chambre);
+
+                String numero = request.getParameter("numero");
+
+                String site = request.getParameter("nomsite");
+
+                int id = Integer.parseInt(site);
+
+                if (!numero.equals("") && !site.equals("")) {
+                    
+                    Chambre c = new Chambre(idcham, new Site(id), numero);
+                    
+                    String message = sc.modifierChambre(c);
+                }
+
+                List<Chambre> chambres = sc.listeChambres();
+                List<Site> sites = ss.listeSite();
+                
+                request.setAttribute("chambres", chambres);
+
+                request.setAttribute("sites", sites);
+
+                this.getServletContext().getRequestDispatcher("/WEB-INF/admin/chambre.jsp").forward(request, response);
 
             }
 
