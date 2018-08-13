@@ -61,6 +61,22 @@ public class ControleurFormation extends HttpServlet {
             request.setAttribute("objet", "modifier");
 
             this.getServletContext().getRequestDispatcher("/WEB-INF/admin/formation.jsp").forward(request, response);
+        } else if (action.equals("admin_supprimer")) {
+
+            String d = request.getParameter("idform");
+
+            int id = Integer.parseInt(d);
+
+            String  message = sf.supprimer(id);
+
+            List<Formation> forms = sf.listesFormation();
+            List<Departement> depts = sd.listeDep();
+
+            request.setAttribute("depts", depts);
+            request.setAttribute("forms", forms);
+
+
+            this.getServletContext().getRequestDispatcher("/WEB-INF/admin/formation.jsp").forward(request, response);
         }
 
     }

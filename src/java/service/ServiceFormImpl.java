@@ -19,6 +19,7 @@ public class ServiceFormImpl implements ServiceForm {
     private static final String SQL_LIST_FORM = "SELECT * FROM `formation` f, `departement` d WHERE f.ID_DEPT = d.ID_DEPT";
     private static final String SQL_MOD_FORM = "UPDATE `formation` SET `ID_DEPT`=?,`NOM_FORM`= ? WHERE `ID_FORM`= ?";
     private static final String SQL_FIND_FORM = "SELECT * FROM `formation` WHERE `ID_FORM` = ?";
+    private static final String SQL_DEL_FORM = "DELETE FROM `formation` WHERE `ID_FORM` = ?";
     
 
     @Override
@@ -120,6 +121,30 @@ public class ServiceFormImpl implements ServiceForm {
         }
         return form;
     }
+
+    @Override
+    public String supprimer(int id) {
+        Connection db = null;
+        PreparedStatement ps = null;
+        String message = null;
+        try {
+            db = Connexion.getConnection();
+            ps = db.prepareStatement(SQL_DEL_FORM);
+            ps.setInt(1, id);
+
+            int statut = ps.executeUpdate();
+
+            if (statut == 1) {
+                message = "reussi";
+            } else {
+                message = "echec";
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return message;
+    }
+    
     
     
 }

@@ -16,5 +16,7 @@ public interface ServiceForm {
     public String modifierFormation(Formation forms);
     
     public Formation rechercher(int id);
+    
+    public String supprimer(int id);
 
 }
