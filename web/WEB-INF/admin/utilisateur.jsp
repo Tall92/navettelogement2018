@@ -17,7 +17,7 @@
 
 
                     <div class="card">
-                        <div class="card-header bg-primary">LISTE DES UTILISTATEURS</div>
+                        <div class="card-header bg-primary">LISTE DES ENSEIGNANTS</div>
                         <div class="card-body table-responsive">
                             <table class="table table-bordered table-striped table-hover">
                                 <tr>                            
@@ -53,7 +53,7 @@
                 </div>
                 <div class="col-lg-4">
                     <div class="card">
-                        <div class="card-header bg-primary">NOUVEL UTILISATEUR</div>
+                        <div class="card-header bg-primary">NOUVEAU ENSEIGNANT</div>
                         <div class="card-body">
                             <form action="controleurutilisateur" method="post">
 

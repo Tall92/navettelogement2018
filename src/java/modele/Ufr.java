@@ -6,12 +6,16 @@ import java.io.Serializable;
  *
  * @author tall
  */
-public class Ufr implements Serializable{
+public class Ufr implements Serializable {
 
     private int idUfr;
     private String nomUfr;
 
     public Ufr() {
+    }
+
+    public Ufr(int idUfr) {
+        this.idUfr = idUfr;
     }
 
     public Ufr(int idUfr, String nomUfr) {

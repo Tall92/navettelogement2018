@@ -1,4 +1,3 @@
-
 package modele;
 
 import java.io.Serializable;
@@ -12,9 +11,14 @@ public class Departement implements Serializable {
     private int idDept;
     private Ufr ufr;
     private String nomDept;
-    
+
     public Departement() {
     }
+
+    public Departement(int idDept) {
+        this.idDept = idDept;
+    }
+
     public Departement(int idDept, String nomDept) {
         this.idDept = idDept;
         this.nomDept = nomDept;

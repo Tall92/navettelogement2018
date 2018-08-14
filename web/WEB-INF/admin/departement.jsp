@@ -53,7 +53,7 @@
                                 <div class="form-group">
                                     <label for="ufr">UFR</label>
                                     <select name="ufr" class="form-control">
-                                        <option></option>
+                                        <option value="${dept.ufr.idUfr}">${dept.ufr.nomUfr}</option>
                                         <c:forEach items="${ufrs}" var="u">
                                             <option value="${u.idUfr}">${u.nomUfr}</option>
                                         </c:forEach>

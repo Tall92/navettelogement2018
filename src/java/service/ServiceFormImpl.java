@@ -18,7 +18,7 @@ public class ServiceFormImpl implements ServiceForm {
     private static final String SQL_ADD_FORM = "INSERT INTO `formation`(`ID_DEPT`, `NOM_FORM`) VALUES (?,?)";
     private static final String SQL_LIST_FORM = "SELECT * FROM `formation` f, `departement` d WHERE f.ID_DEPT = d.ID_DEPT";
     private static final String SQL_MOD_FORM = "UPDATE `formation` SET `ID_DEPT`=?,`NOM_FORM`= ? WHERE `ID_FORM`= ?";
-    private static final String SQL_FIND_FORM = "SELECT * FROM `formation` WHERE `ID_FORM` = ?";
+    private static final String SQL_FIND_FORM = "SELECT * FROM `formation` f, `departement` d WHERE f.ID_DEPT = d.ID_DEPT AND `ID_FORM` = ?";
     private static final String SQL_DEL_FORM = "DELETE FROM `formation` WHERE `ID_FORM` = ?";
     
 

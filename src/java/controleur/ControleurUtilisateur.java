@@ -98,11 +98,53 @@ public class ControleurUtilisateur extends HttpServlet {
                     u.setAdresse(adresse);
                     u.setTel(telephone);
                     u.setLogin(login);
-                    u.setUfr(new Ufr(idUfr, ""));
-                    u.setDept(new Departement(dept, ""));
+                    u.setUfr(new Ufr(idUfr));
+                    u.setDept(new Departement(dept));
                     u.setProfil(profil);
 
                     us.ajouterUsers(u);
+
+                }
+
+                List<Utilisateur> users = us.listeUtilisateur();
+                List<Ufr> ufrs = su.listeUfr();
+                List<Departement> depts = sd.listeDep();
+
+                request.setAttribute("ufrs", ufrs);
+                request.setAttribute("depts", depts);
+                request.setAttribute("users", users);
+
+                this.getServletContext().getRequestDispatcher("/WEB-INF/admin/utilisateur.jsp").forward(request, response);
+            } else if (action.equals("modifier")) {
+
+                String prenom = request.getParameter("prenom");
+                String nom = request.getParameter("nom");
+                String adresse = request.getParameter("adresse");
+                String telephone = request.getParameter("tel");
+                String login = request.getParameter("email");
+                String ufr = request.getParameter("ufr");
+                int idUfr = Integer.parseInt(ufr);
+                String departement = request.getParameter("dept");
+                int dept = Integer.parseInt(departement);
+                String profil = request.getParameter("profil");
+                
+                int idUser = Integer.parseInt(request.getParameter("idUser"));
+
+                if (!prenom.equals("") && !nom.equals("") && !adresse.equals("") && !telephone.equals("") && !login.equals("") && !ufr.equals("") && !departement.equals("") && !profil.equals("")) {
+                    Utilisateur u = new Utilisateur();
+                    
+                    u.setIdUser(idUser);
+
+                    u.setPrenom(prenom);
+                    u.setNom(nom);
+                    u.setAdresse(adresse);
+                    u.setTel(telephone);
+                    u.setLogin(login);
+                    u.setUfr(new Ufr(idUfr));
+                    u.setDept(new Departement(dept));
+                    u.setProfil(profil);
+
+                    us.modifierUtilisateur(u);
 
                 }
 

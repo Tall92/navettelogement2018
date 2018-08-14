@@ -54,7 +54,7 @@
                                 <div class="form-group">
                                     <label for="dept">Nom du Département</label>
                                     <select name="dept" class="form-control" id="dept">
-                                        <option></option>
+                                        <option value="${form.dept.idDept}">${form.dept.nomDept}</option>
                                         <c:forEach items="${depts}" var="d">
                                             <option value="${d.idDept}">${d.nomDept}</option>
                                         </c:forEach>

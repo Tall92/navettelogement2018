@@ -12,8 +12,9 @@ public interface ServiceUtilisateur {
     public String ajouterUsers(Utilisateur user);
 
     public List<Utilisateur> listeUtilisateur();
-      public String modifierUtilisateur(Utilisateur user);
-      
-           public Utilisateur rechercher(int id);
+
+    public String modifierUtilisateur(Utilisateur user);
+
+    public Utilisateur rechercher(int id);
 
 }
