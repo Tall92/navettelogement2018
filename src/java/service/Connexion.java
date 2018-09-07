@@ -15,7 +15,7 @@ import java.sql.SQLException;
  */
 public class Connexion {
 
-    private static String url = "jdbc:mysql://localhost:3306/navette_logement";
+    private static String url = "jdbc:mysql://localhost:3306/navette_logement?useUnicode=true&characterEncoding=UTF-8";
     private static String user = "root";
     private static String password = "";
     private static Connection cnx;

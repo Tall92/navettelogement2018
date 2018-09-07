@@ -22,7 +22,7 @@
                                 <tr>                            
                                     <th>MATRICULE</th>
                                     <th>NOMBRES DE PLACE</th>
-                                    <th colspan="1">Action</th>
+                                    <th colspan="2">Action</th>
                                 </tr>
                                 <c:forEach items="${navettes}" var="n">
                                     <tr>

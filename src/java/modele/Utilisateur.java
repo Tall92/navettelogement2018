@@ -18,6 +18,7 @@ public class Utilisateur implements Serializable {
     private String login;
     private String motPasse;
     private String profil;
+    private int statut;
 
     public Utilisateur(){
         
@@ -108,5 +109,12 @@ public class Utilisateur implements Serializable {
         this.profil = profil;
     }
     
+    public int getStatut() {
+        return statut;
+    }
+
+    public void setStatut(int statut) {
+        this.statut = statut;
+    }
 
 }

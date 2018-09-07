@@ -18,5 +18,9 @@ public interface ServiceAdminis {
     public String modifier(Administrateur admin);
 
     public List<Administrateur> listeAdministrateur();
+    
+    public String activer(int id);
+    
+    public String desactiver(int id);
 
 }

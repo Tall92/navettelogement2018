@@ -61,12 +61,29 @@ public class ControleurChambre extends HttpServlet {
             request.setAttribute("objet", "modifier");
 
             this.getServletContext().getRequestDispatcher("/WEB-INF/admin/chambre.jsp").forward(request, response);
+        } else if (action.equals("admin_supprimer")) {
+            String idcham = request.getParameter("idcham");
+            
+            int id = Integer.parseInt(idcham);
+            
+            sc.supprimer(id);
+            
+            List<Chambre> chambres = sc.listeChambres();
+            List<Site> sites = ss.listeSite();
+
+            request.setAttribute("chambres", chambres);
+            request.setAttribute("sites", sites);
+            
+            this.getServletContext().getRequestDispatcher("/WEB-INF/admin/chambre.jsp").forward(request, response);
         }
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        request.setCharacterEncoding("UTF-8");
+        
         String action = request.getParameter("action");
 
         if (action != null) {

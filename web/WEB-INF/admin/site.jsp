@@ -23,7 +23,7 @@
                                     <th>Nom du Site</th>
                                     <th>Nom du Gestionnaire</th>
                                     <th>Coordonnées du Gestionnaire</th>
-                                    <th colspan="1">Action</th>
+                                    <th colspan="2">Action</th>
                                 </tr>
                                 <c:forEach items="${sites}" var="s">
                                     <tr>
@@ -33,6 +33,7 @@
                                             <br/><i class="fa fa-phone fa-2x"></i> : <c:out value="${s.ges.tel}" /></td>
 
                                         <td><a class="btn btn-primary" href="controleursite?action=admin_modifier&idsite=${s.sit}"><i class="fa fa-edit fa-2x"></i></a></td>
+                                        <td><a class="btn btn-primary" href="controleursite?action=admin_supprimer&idsite=${s.sit}"><i class="fa fa-remove fa-2x"></i></a></td>
 
                                     </tr>
                                 </c:forEach>

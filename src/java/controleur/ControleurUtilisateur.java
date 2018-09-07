@@ -31,6 +31,7 @@ public class ControleurUtilisateur extends HttpServlet {
         su = new ServiceUfrImpl();
         sd = new ServiceDeptImpl();
         us = new ServiceUtilisateurImpl();
+        
     }
 
     @Override
@@ -66,6 +67,40 @@ public class ControleurUtilisateur extends HttpServlet {
             request.setAttribute("objet", "modifier");
             
             this.getServletContext().getRequestDispatcher("/WEB-INF/admin/utilisateur.jsp").forward(request, response);
+        } else if (action.equals("admin_desactiver")) {
+            
+            String d = request.getParameter("iduser");
+
+            int id = Integer.parseInt(d);
+            
+            String message = us.desactiver(id);
+            
+            List<Utilisateur> users = us.listeUtilisateur();
+            List<Ufr> ufrs = su.listeUfr();
+            List<Departement> depts = sd.listeDep();
+            
+            request.setAttribute("ufrs", ufrs);
+            request.setAttribute("depts", depts);
+            request.setAttribute("users", users);
+            this.getServletContext().getRequestDispatcher("/WEB-INF/admin/utilisateur.jsp").forward(request, response);
+            
+        } else if (action.equals("admin_activer")) {
+            
+            String d = request.getParameter("iduser");
+
+            int id = Integer.parseInt(d);
+            
+            String message = us.activer(id);
+            
+            List<Utilisateur> users = us.listeUtilisateur();
+            List<Ufr> ufrs = su.listeUfr();
+            List<Departement> depts = sd.listeDep();
+            
+            request.setAttribute("ufrs", ufrs);
+            request.setAttribute("depts", depts);
+            request.setAttribute("users", users);
+            
+            this.getServletContext().getRequestDispatcher("/WEB-INF/admin/utilisateur.jsp").forward(request, response);
         }
 
     }
@@ -73,6 +108,8 @@ public class ControleurUtilisateur extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        request.setCharacterEncoding("UTF-8");
 
         String action = request.getParameter("action");
 
@@ -120,6 +157,7 @@ public class ControleurUtilisateur extends HttpServlet {
                 String prenom = request.getParameter("prenom");
                 String nom = request.getParameter("nom");
                 String adresse = request.getParameter("adresse");
+                System.out.println(adresse);
                 String telephone = request.getParameter("tel");
                 String login = request.getParameter("email");
                 String ufr = request.getParameter("ufr");

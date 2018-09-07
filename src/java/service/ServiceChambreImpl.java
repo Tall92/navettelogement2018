@@ -24,7 +24,9 @@ public class ServiceChambreImpl implements ServiceChambre {
     private static final String SQL_LIST_CHAM = "SELECT * FROM `chambre` c, `site` s WHERE c.`ID_SITE` = s.`ID_SITE`";
     private static final String SQL_MOD_CHAM = "UPDATE `chambre` SET `ID_SITE`=?,`NUMERO`=? WHERE `ID_CHAMBRE`=?";
     private static final String SQL_FIND_CHAM = "SELECT * FROM `chambre` c, `site` s WHERE c.`ID_SITE` = s.`ID_SITE` AND `ID_CHAMBRE` = ?";
-
+    private static final String SQL_DEL_CHAM = "DELETE FROM `chambre` WHERE `ID_CHAMBRE`=?";
+    
+    
     @Override
     public String ajouter(Chambre c) {
         Connection db = null;
@@ -125,4 +127,30 @@ public class ServiceChambreImpl implements ServiceChambre {
         return c;
     }
 
+    @Override
+    public String supprimer(int id) {
+        
+        Connection db = null;
+        PreparedStatement ps = null;
+        String message = null;
+        try {
+            db = Connexion.getConnection();
+            ps = db.prepareStatement(SQL_DEL_CHAM);
+            ps.setInt(1, id);
+            
+            int statut = ps.executeUpdate();
+
+            if (statut == 1) {
+                message = "réussi";
+            } else {
+                message = "echec";
+
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return message;
+    }
+
+    
 }

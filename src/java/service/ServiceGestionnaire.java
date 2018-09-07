@@ -17,4 +17,6 @@ public interface ServiceGestionnaire {
 
     public Gestionnaire rechercherGestion(int Ges);
 
+    public String supprimer(int id);
+
 }

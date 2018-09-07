@@ -18,7 +18,7 @@ public class ServiceGestionImpl implements ServiceGestionnaire {
     private static final String SQL_MOD_GES = "UPDATE `gestionnaire` SET `PRENOM`=?,`NOM`=?,`ADRESSE`? WHERE `ID_GEST`=?";
     private static final String SQL_LIST_GES = "SELECT * FROM `gestionnaire` ";
     private static final String SQL_FIND_GES = "SELECT * FROM `gestionnaire` WHERE `ID_GEST` = ?";
-    Gestionnaire g = new Gestionnaire();
+    private static final String SQL_DEL_GES = "DELETE FROM `gestionnaire` WHERE `ID_GEST` = ?";
 
     @Override
     public String ajouterGes(Gestionnaire gess) {
@@ -127,6 +127,31 @@ public class ServiceGestionImpl implements ServiceGestionnaire {
         }
         return gestion;
     }
+
+    @Override
+    public String supprimer(int id) {
+        Connection db = null;
+        PreparedStatement ps = null;
+        String message = null;
+        try {
+            db = Connexion.getConnection();
+            ps = db.prepareStatement(SQL_DEL_GES);
+            ps.setInt(1, id);
+            
+            int statut = ps.executeUpdate();
+
+            if (statut == 1) {
+                message = "reussi";
+            } else {
+                message = "echec";
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return message;
+    }
+    
+    
 
 }
 

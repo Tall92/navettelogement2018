@@ -13,8 +13,7 @@
             <div class="row">
 
                 <div class="col-lg-8">
-
-
+                    
                     <div class="card">
                         <div class="card-header bg-primary">LISTE DES CHAMBRES</div>
                         <div class="card-body">
@@ -22,15 +21,16 @@
                                 <tr>                            
                                     <th>Numéro du Chambre</th>
                                     <th>Nom du Site</th>
-                                    <th colspan="1">Action</th>
+                                    <th colspan="2">Action</th>
                                 </tr>
                                 <c:forEach items="${chambres}" var="c">
                                     <tr>
                                         <td><c:out value="${c.numero}" /></td>
                                         <td><c:out value="${c.site.nomSite}" /></td>
-                                        
-                                        <td><a class="btn btn-primary" href="controleurchambre?action=admin_modifier&idcham=${c.idCh}"><i class="fa fa-edit fa-2x"></i></a></td>
 
+                                        <td><a class="btn btn-primary" href="controleurchambre?action=admin_modifier&idcham=${c.idCh}"><i class="fa fa-edit fa-2x"></i></a></td>
+                                        <td><a class="btn btn-primary" href="controleurchambre?action=admin_supprimer&idcham=${c.idCh}"><i class="fa fa-remove fa-2x"></i></a></td>
+                                        
                                     </tr>
                                 </c:forEach>
                             </table>

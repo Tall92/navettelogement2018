@@ -54,10 +54,10 @@ public class ControleurNavette extends HttpServlet {
             request.setAttribute("navette", navette);
 
             this.getServletContext().getRequestDispatcher("/WEB-INF/admin/navette.jsp").forward(request, response);
+            
         } else if (action.equals("admin_supprimer")) {
-        String matricule=request.getParameter("matricule");
-        String place = request.getParameter("place");
-            String nav = request.getParameter("nav");
+            
+            String nav = request.getParameter("idnav");
 
             int id = Integer.parseInt(nav);
 
@@ -66,8 +66,6 @@ public class ControleurNavette extends HttpServlet {
             List<Navette> naves = sn.listeNavettes();
 
             request.setAttribute("naves", naves);
-            request.setAttribute("matricule", matricule);
-            request.setAttribute("place", place);
 
             this.getServletContext().getRequestDispatcher("/WEB-INF/admin/navette.jsp").forward(request, response);
         }
@@ -76,6 +74,8 @@ public class ControleurNavette extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
+        request.setCharacterEncoding("UTF-8");
 
         String action = request.getParameter("action");
         if (action != null) {

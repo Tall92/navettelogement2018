@@ -19,6 +19,7 @@ public class ServiceSiteImpl implements ServiceSite {
     private static final String SQL_LIST_SITE = "SELECT * FROM `site` s, `gestionnaire` g WHERE s.`ID_GEST` = g.`ID_GEST`";
     private static final String SQL_MOD_SITE = "UPDATE `site` SET `ID_GEST`=?,`NOM_SITE`=? WHERE `ID_SITE`=?";
     private static final String SQL_FIND_SITE = "SELECT * FROM `site` s, `gestionnaire` g WHERE s.`ID_GEST` = g.`ID_GEST` AND s.`ID_SITE`=?";
+    private static final String SQL_DEL_SITE = "DELETE FROM `site` WHERE `ID_SITE`=?";
 
     @Override
     public String ajouterSite(Site sit) {
@@ -121,5 +122,32 @@ public class ServiceSiteImpl implements ServiceSite {
         return site;
 
     }
+
+    @Override
+    public String supprimer(int sit) {
+        Connection db = null;
+        PreparedStatement ps = null;
+        String message = null;
+        try {
+            db = Connexion.getConnection();
+            ps = db.prepareStatement(SQL_DEL_SITE);
+            ps.setInt(1, sit);
+
+            int statut = ps.executeUpdate();
+
+            if (statut == 1) {
+                message = "réussi";
+            } else {
+                message = "echec";
+
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return message;
+    }
+    
+    
+    
 
 }

@@ -59,6 +59,21 @@ public class ControleurSite extends HttpServlet {
             request.setAttribute("objet", "modifier");
 
             this.getServletContext().getRequestDispatcher("/WEB-INF/admin/site.jsp").forward(request, response);
+        } else if (action.equals("admin_supprimer")) {
+
+            String s = request.getParameter("idsite");
+
+            int id = Integer.parseInt(s);
+
+            String message = si.supprimer(id);
+
+            List<Gestionnaire> gestions = sg.listeGestion();
+            List<Site> sites = si.listeSite();
+
+            request.setAttribute("gestions", gestions);
+            request.setAttribute("sites", sites);
+
+            this.getServletContext().getRequestDispatcher("/WEB-INF/admin/site.jsp").forward(request, response);
         }
 
     }
@@ -66,6 +81,8 @@ public class ControleurSite extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+        
         String action = request.getParameter("action");
 
         if (action != null) {

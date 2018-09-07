@@ -16,5 +16,9 @@ public interface ServiceUtilisateur {
     public String modifierUtilisateur(Utilisateur user);
 
     public Utilisateur rechercher(int id);
+    
+    public String activer(int id);
+    
+    public String desactiver(int id);
 
 }

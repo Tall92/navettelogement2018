@@ -16,4 +16,6 @@ public interface ServiceSite {
     public String modifierSite(Site site);
 
     public Site rechercherSite(int sit);
+    
+    public String supprimer(int sit);
 }

@@ -20,6 +20,8 @@ public class ServiceUtilisateurImpl implements ServiceUtilisateur {
     private static final String SQL_LIST_USER = "SELECT * FROM `utilisateur` us, `ufr` u, `departement` d WHERE us.ID_UFR = u.ID_UFR AND us.ID_DEPT= d.ID_DEPT";
     private static final String SQL_MOD_USER = "UPDATE `utilisateur` SET `ID_UFR`=?,`ID_DEPT`=?,`PRENOM`=?,`NOM`=?,`ADRESSE`=?,`TELEPHONE`=?,`LOGIN`=?,`MOT_DE_PASSE`='navette2018',`PROFIL`=? WHERE `ID_USER`=?";
     private static final String SQL_FIND_USER = "SELECT * FROM `utilisateur` us, `ufr` u, `departement` d WHERE us.ID_UFR = u.ID_UFR AND us.ID_DEPT= d.ID_DEPT AND `ID_USER`=?";
+    private static final String SQL_ACT = "UPDATE `utilisateur` SET `STATUT`=1 WHERE `ID_USER`=?";
+    private static final String SQL_DESACT = "UPDATE `utilisateur` SET `STATUT`=0 WHERE `ID_USER`=?";
 
     @Override
     public String ajouterUsers(Utilisateur user) {
@@ -75,7 +77,7 @@ public class ServiceUtilisateurImpl implements ServiceUtilisateur {
                 a.setTel(rs.getString("TELEPHONE"));
                 a.setLogin(rs.getString("LOGIN"));
                 a.setProfil(rs.getString("PROFIL"));
-
+                a.setStatut(rs.getInt("STATUT"));
                 users.add(a);
             }
 
@@ -138,7 +140,7 @@ public class ServiceUtilisateurImpl implements ServiceUtilisateur {
                 user.setTel(rs.getString("TELEPHONE"));
                 user.setLogin(rs.getString("LOGIN"));
                 user.setProfil(rs.getString("PROFIL"));
-
+                user.setStatut(rs.getInt("STATUT"));
             }
 
         } catch (SQLException e) {
@@ -146,4 +148,52 @@ public class ServiceUtilisateurImpl implements ServiceUtilisateur {
         }
         return user;
     }
+
+    @Override
+    public String activer(int id) {
+        Connection db = null;
+        PreparedStatement ps = null;
+        String message = null;
+        try {
+            db = Connexion.getConnection();
+            ps = db.prepareStatement(SQL_ACT);
+            
+            ps.setInt(1, id);
+            int statut = ps.executeUpdate();
+
+            if (statut == 1) {
+                message = "reussi";
+            } else {
+                message = "echec";
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return message;
+    }
+
+    @Override
+    public String desactiver(int id) {
+        Connection db = null;
+        PreparedStatement ps = null;
+        String message = null;
+        try {
+            db = Connexion.getConnection();
+            ps = db.prepareStatement(SQL_DESACT);
+            
+            ps.setInt(1, id);
+            int statut = ps.executeUpdate();
+
+            if (statut == 1) {
+                message = "reussi";
+            } else {
+                message = "echec";
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return message;
+    }
+    
+    
 }

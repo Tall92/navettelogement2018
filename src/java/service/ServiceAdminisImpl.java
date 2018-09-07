@@ -19,7 +19,10 @@ public class ServiceAdminisImpl implements ServiceAdminis {
     private static final String SQL_LIST = "SELECT * FROM `administrateur`";
     private static final String SQL_FIND = "SELECT * FROM `administrateur` WHERE id_user = ?";
     private static final String SQL_MOD = "UPDATE `administrateur` SET `PRENOM`=?,`NOM`=?,`TELEPHONE`=?,`LOGIN`=? WHERE `ID_USER`=?";
-
+    private static final String SQL_ACT = "UPDATE `administrateur` SET `STATUT`=1  WHERE id_user = ?";
+    private static final String SQL_DESACT = "UPDATE `administrateur` SET `STATUT`=0  WHERE id_user = ?";
+    
+    
     @Override
     public Administrateur connexion(String login, String password) {
 
@@ -155,4 +158,49 @@ public class ServiceAdminisImpl implements ServiceAdminis {
 
     }
 
+    @Override
+    public String activer(int id) {
+        Connection db = null;
+        PreparedStatement ps = null;
+        String message = null;
+        try {
+            db = Connexion.getConnection();
+            ps = db.prepareStatement(SQL_ACT);
+            
+            ps.setInt(1, id);
+            int statut = ps.executeUpdate();
+
+            if (statut == 1) {
+                message = "reussi";
+            } else {
+                message = "echec";
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return message;
+    }
+
+    @Override
+    public String desactiver(int id) {
+        Connection db = null;
+        PreparedStatement ps = null;
+        String message = null;
+        try {
+            db = Connexion.getConnection();
+            ps = db.prepareStatement(SQL_DESACT);
+            
+            ps.setInt(1, id);
+            int statut = ps.executeUpdate();
+
+            if (statut == 1) {
+                message = "reussi";
+            } else {
+                message = "echec";
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return message;
+    }
 }

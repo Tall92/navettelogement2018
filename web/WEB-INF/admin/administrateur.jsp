@@ -33,7 +33,15 @@
                                         <td><c:out value="${a.telephone}" /></td>
                                         <td><c:out value="${a.login}" /></td>
                                         <td><a title="Modifier" class="btn btn-primary" href="controleuradminis?action=admin_modifier&iduser=${a.idUser}"><i class="fa fa-pencil-square-o fa-2x"></i></a></td>
-                                        <td><a>Activer</a></td>
+                                        <td>
+                                            <c:if test="${us.statut eq '1'}">
+                                                <a class="btn btn-primary" title="Désactiver" href="controleuradminis?action=admin_desactiver&iduser=${a.idUser}"><i class="fa fa-toggle-off fa-2x"></i></a>
+                                            </c:if>
+                                        
+                                            <c:if test="${us.statut eq '0'}">
+                                                <a class="btn btn-primary" title="Activer" href="controleuradminis?action=admin_activer&iduser=${a.idUser}"><i class="fa fa-toggle-on fa-2x"></i></a>
+                                            </c:if>
+                                        </td>
                                     </tr>
                                 </c:forEach>
                             </table>

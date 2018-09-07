@@ -33,7 +33,8 @@
                                         <td><c:out value="${g.tel}" /></td>
                                         <td><c:out value="${g.adr}" /></td>
                                         <td><a title="Modifier" class="btn btn-primary" href="controleurgestion?action=admin_modifier&idges=${g.ges}"><i class="fa fa-pencil-square-o fa-2x"></i></a></td>
-                                        <td><a>Activer</a></td>
+                                        <td><a title="Modifier" class="btn btn-primary" href="controleurgestion?action=admin_supprimer&idges=${g.ges}"><i class="fa fa-remove fa-2x"></i></a></td>
+                                        
                                     </tr>
                                 </c:forEach>
                             </table>

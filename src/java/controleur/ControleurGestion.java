@@ -1,7 +1,6 @@
 package controleur;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -51,6 +50,19 @@ public class ControleurGestion extends HttpServlet {
             request.setAttribute("gestion", g);
 
             this.getServletContext().getRequestDispatcher("/WEB-INF/admin/gestionnaire.jsp").forward(request, response);
+        } else if (action.equals("admin_supprimer")) {
+
+            String user = request.getParameter("idges");
+
+            int id = Integer.parseInt(user);
+            
+            String message = sg.supprimer(id);
+
+            List<Gestionnaire> gestions = sg.listeGestion();
+
+            request.setAttribute("gestions", gestions);
+
+            this.getServletContext().getRequestDispatcher("/WEB-INF/admin/gestionnaire.jsp").forward(request, response);
         }
 
     }
@@ -58,6 +70,8 @@ public class ControleurGestion extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        request.setCharacterEncoding("UTF-8");
 
         String action = request.getParameter("action");
 

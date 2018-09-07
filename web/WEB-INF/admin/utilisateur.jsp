@@ -29,7 +29,7 @@
                                     <th>UFR</th>
                                     <th>DEPARTEMENT</th>
                                     <th>PROFIL</th>
-                                    <th colspan="1">Action</th>
+                                    <th colspan="2">Action</th>
                                 </tr>
                                 <c:forEach items="${users}" var="us">
                                     <tr>
@@ -42,7 +42,15 @@
                                         <td><c:out value="${us.dept.nomDept}" /></td>
                                         <td><c:out value="${us.profil}" /></td>
                                         <td><a class="btn btn-primary" href="controleurutilisateur?action=admin_modifier&iduser=${us.idUser}"><i class="fa fa-edit fa-2x"></i></a></td>
-
+                                        <td>
+                                            <c:if test="${us.statut eq '1'}">
+                                                <a class="btn btn-primary" title="Désactiver" href="controleurutilisateur?action=admin_desactiver&iduser=${us.idUser}"><i class="fa fa-toggle-off fa-2x"></i></a>
+                                            </c:if>
+                                        
+                                            <c:if test="${us.statut eq '0'}">
+                                                <a class="btn btn-primary" title="Activer" href="controleurutilisateur?action=admin_activer&iduser=${us.idUser}"><i class="fa fa-toggle-on fa-2x"></i></a>
+                                            </c:if>
+                                        </td>
                                     </tr>
                                 </c:forEach>
                             </table>

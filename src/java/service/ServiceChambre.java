@@ -21,5 +21,7 @@ public interface ServiceChambre {
     public String modifierChambre(Chambre cha);
     
     public Chambre rechercher(int id);
+    
+    public String supprimer(int id);
 
 }
