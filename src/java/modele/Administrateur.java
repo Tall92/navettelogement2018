@@ -19,6 +19,7 @@ public class Administrateur implements Serializable {
     private String telephone;
     private String login;
     private String motDePasse;
+    private int statut;
 
     public int getIdUser() {
         return idUser;
@@ -67,9 +68,14 @@ public class Administrateur implements Serializable {
     public void setMotDePasse(String motDePasse) {
         this.motDePasse = motDePasse;
     }
-    
-    
-    
-    
 
+    public int getStatut() {
+        return statut;
+    }
+
+    public void setStatut(int statut) {
+        this.statut = statut;
+    }
+    
+    
 }

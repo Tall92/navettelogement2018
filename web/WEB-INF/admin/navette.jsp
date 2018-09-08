@@ -17,7 +17,7 @@
 
                     <div class="card">
                         <div class="card-header bg-primary">LISTE DES NAVETTES</div>
-                        <div class="card-body">
+                        <div class="card-body table-responsive">
                             <table class="table table-bordered table-striped table-hover">
                                 <tr>                            
                                     <th>MATRICULE</th>
@@ -63,6 +63,7 @@
                 </div>
             </div>
         </div>
+                            <jsp:include page="script.jsp" />
     </body>
 </html>
 

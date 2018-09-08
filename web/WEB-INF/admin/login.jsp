@@ -4,9 +4,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>GESTION_NAVETTE_LOGEMENT</title>
-        <link rel="stylesheet" href="bootstrap-4.1.2/css/bootstrap.min.css" />
-
-        <link rel="stylesheet" href="css/steel.css" />
+        <jsp:include page="style.jsp" />
 
     </head>
     <body>
@@ -35,4 +33,5 @@
             </div>
         </div>
     </body>
+    <jsp:include page="script.jsp" />
 </html>

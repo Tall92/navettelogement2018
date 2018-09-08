@@ -37,6 +37,7 @@ public class ServiceAdminisImpl implements ServiceAdminis {
             ps.setString(2, password);
             // excution de la requete
             rs = ps.executeQuery();
+            
             if (rs.next()) {
                 a = new Administrateur();
                 a.setIdUser(rs.getInt("id_user"));
@@ -96,6 +97,7 @@ public class ServiceAdminisImpl implements ServiceAdminis {
                 a.setNom(rs.getString("nom"));
                 a.setTelephone(rs.getString("telephone"));
                 a.setLogin(rs.getString("login"));
+                a.setStatut(rs.getInt("statut"));
                 adminis.add(a);
             }
 
@@ -123,6 +125,7 @@ public class ServiceAdminisImpl implements ServiceAdminis {
                 a.setNom(rs.getString("nom"));
                 a.setTelephone(rs.getString("telephone"));
                 a.setLogin(rs.getString("login"));
+                a.setStatut(rs.getInt("statut"));
             }
         } catch (SQLException e) {
             e.printStackTrace();

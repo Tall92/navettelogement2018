@@ -17,7 +17,7 @@
                 <div class="col-lg-8">
                     <div class="card border-primary">
                         <div class="card-header bg-primary">LES GESTIONNAIRES</div>
-                        <div class="card-body">
+                        <div class="card-body table-responsive">
                             <table class="table table-bordered table-striped table-hover">
                                 <tr>
                                     <th>PRENOM</th>
@@ -81,11 +81,7 @@
                     </div>
                 </div>
             </div>
-            <!--            <div id="formdiv" class="offset-lg-3 col-lg-6"> 
-            
-                            
-                        </div>
-                    </div>-->
+            <jsp:include page="script.jsp" />
     </body>
 </html>
 

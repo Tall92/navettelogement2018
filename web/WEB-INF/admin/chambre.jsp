@@ -16,7 +16,7 @@
                     
                     <div class="card">
                         <div class="card-header bg-primary">LISTE DES CHAMBRES</div>
-                        <div class="card-body">
+                        <div class="card-body table-responsive">
                             <table class="table table-bordered table-striped table-hover">
                                 <tr>                            
                                     <th>Numéro du Chambre</th>
@@ -68,6 +68,7 @@
                 </div>
             </div>
         </div>
+                            <jsp:include page="script.jsp" />
     </body>
 </html>
 

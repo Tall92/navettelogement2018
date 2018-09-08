@@ -17,7 +17,7 @@
 
                     <div class="card">
                         <div class="card-header bg-primary">LISTE DES UFRs</div>
-                        <div class="card-body">
+                        <div class="card-body table-responsive">
                             <table class="table table-bordered table-striped table-hover">
                                 <tr>                            
                                     <th>Nom De l'UFR</th>                            
@@ -29,7 +29,7 @@
 
                                         <td><a class="btn btn-primary" href="controleurufr?action=admin_modifier&idufr=${u.idUfr}"><i class="fa fa-edit fa-2x"></i></a></td>
                                         <td><a class="btn btn-primary" href="controleurufr?action=admin_supprimer&idufr=${u.idUfr}"><i class="fa fa-remove fa-2x"></i></a></td>
-                                        
+
                                     </tr>
                                 </c:forEach>
                             </table>
@@ -57,5 +57,6 @@
                 </div>
             </div>
         </div>
+        <jsp:include page="script.jsp" />
     </body>
 </html>

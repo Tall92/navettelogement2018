@@ -1,5 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    <filter>
+        <filter-name>AdminRestriction</filter-name>
+        <filter-class>filter.AdminRestriction</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>AdminRestriction</filter-name>
+        <url-pattern>/controleurufr</url-pattern>
+        <url-pattern>/controleurdept</url-pattern>
+        <url-pattern>/controleurformation</url-pattern>
+        <url-pattern>/controleurutilisateur</url-pattern>
+        <url-pattern>/controleurgestion</url-pattern>
+        <url-pattern>/controleursite</url-pattern>
+        <url-pattern>/controleurchambre</url-pattern>
+        <url-pattern>/controleurnavette</url-pattern>
+        <url-pattern>/controleuradminis</url-pattern>
+    </filter-mapping>
     <servlet>
         <servlet-name>ControleurAdminis</servlet-name>
         <servlet-class>controleur.ControleurAdminis</servlet-class>

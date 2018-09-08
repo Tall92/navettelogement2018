@@ -27,6 +27,8 @@ public class ControleurAdminis extends HttpServlet {
 
         if (action == null) {
             this.getServletContext().getRequestDispatcher("/WEB-INF/admin/login.jsp").forward(request, response);
+        } else if (action.equals("index")) {
+            this.getServletContext().getRequestDispatcher("/WEB-INF/admin/index.jsp").forward(request, response);
         } else if (action.equals("admin")) {
 
             List<Administrateur> administrateurs = sa.listeAdministrateur();
@@ -48,9 +50,44 @@ public class ControleurAdminis extends HttpServlet {
             
             request.setAttribute("objet", "modifier");
             
-            request.setAttribute("admin", a);
+            request.setAttribute("ad", a);
 
             this.getServletContext().getRequestDispatcher("/WEB-INF/admin/administrateur.jsp").forward(request, response);
+        } else if (action.equals("admin_desactiver")) {
+            
+            String user = request.getParameter("iduser");
+            
+            int id = Integer.parseInt(user);
+            
+            String message = sa.desactiver(id);
+            
+            List<Administrateur> administrateurs = sa.listeAdministrateur();
+
+            request.setAttribute("administrateurs", administrateurs);
+
+            this.getServletContext().getRequestDispatcher("/WEB-INF/admin/administrateur.jsp").forward(request, response);
+        } else if (action.equals("admin_activer")) {
+            
+            String user = request.getParameter("iduser");
+            
+            int id = Integer.parseInt(user);
+            
+            String message = sa.activer(id);
+            
+            List<Administrateur> administrateurs = sa.listeAdministrateur();
+
+            request.setAttribute("administrateurs", administrateurs);
+
+            this.getServletContext().getRequestDispatcher("/WEB-INF/admin/administrateur.jsp").forward(request, response);
+        } else if (action.equals("admin_logout")) {
+            
+            HttpSession session = request.getSession();
+            
+            session.removeAttribute("admin");
+            
+            session.invalidate();
+
+            this.getServletContext().getRequestDispatcher("/WEB-INF/admin/login.jsp").forward(request, response);
         }
     }
 
@@ -66,17 +103,19 @@ public class ControleurAdminis extends HttpServlet {
             if (action.equals("Connexion")) {
                 String login = request.getParameter("email");
                 String password = request.getParameter("motdepasse");
-
+                
                 Administrateur a = sa.connexion(login, password);
 
                 if (a == null) {
+                    String message = "Login et/ou mot de passe incorrect ou compte inactif";
+                    request.setAttribute("message", message);
                     this.getServletContext().getRequestDispatcher("/WEB-INF/admin/login.jsp").forward(request, response);
 
                 } else {
                     HttpSession session = request.getSession();
                     session.setAttribute("admin", a);
-                    this.getServletContext().getRequestDispatcher("/WEB-INF/admin/administrateur.jsp").forward(request, response);
-                    //response.sendRedirect("WEB-INF/admin/administrateur.jsp");
+                    this.getServletContext().getRequestDispatcher("/WEB-INF/admin/index.jsp").forward(request, response);
+                    
                 }
             } else if (action.equals("ajouter")) {
                 

@@ -17,7 +17,7 @@
 
                     <div class="card">
                         <div class="card-header bg-primary">LISTE DES DEPARTEMENTS</div>
-                        <div class="card-body">
+                        <div class="card-body table-responsive">
                             <table class="table table-bordered table-striped table-hover">
                                 <tr>                            
                                     <th>Nom du Département</th>
@@ -57,7 +57,7 @@
                                         <c:forEach items="${ufrs}" var="u">
                                             <option value="${u.idUfr}">${u.nomUfr}</option>
                                         </c:forEach>
-                                        
+
                                     </select>
                                 </div>
 
@@ -68,6 +68,7 @@
                 </div>
             </div>
         </div>
+        <jsp:include page="script.jsp" />
     </body>
 </html>
 

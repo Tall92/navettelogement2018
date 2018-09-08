@@ -17,7 +17,7 @@
 
                     <div class="card">
                         <div class="card-header bg-primary">LISTE DES FORMATIONS</div>
-                        <div class="card-body">
+                        <div class="card-body table-responsive">
                             <table class="table table-bordered table-striped table-hover">
                                 <tr>                            
                                     <th>Nom de la Formation</th>
@@ -43,7 +43,7 @@
                         <div class="card-header bg-primary">NOUVELLE FORMATION</div>
                         <div class="card-body">
                             <form action="controleurformation" method="post">
-                                
+
                                 <input type="hidden" name="action" value="${objet != null ? objet : 'ajouter'}" />
                                 <input type="hidden" name="idform" value="${form.idForm}" />
 
@@ -58,7 +58,7 @@
                                         <c:forEach items="${depts}" var="d">
                                             <option value="${d.idDept}">${d.nomDept}</option>
                                         </c:forEach>
-                                        
+
                                     </select>
                                 </div>
 
@@ -69,6 +69,7 @@
                 </div>
             </div>
         </div>
+        <jsp:include page="script.jsp" />
     </body>
 </html>
 
