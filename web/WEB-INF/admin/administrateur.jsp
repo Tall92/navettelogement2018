@@ -5,7 +5,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Espace Administrateur</title>
-        <jsp:include page="style.jsp" />
+        <jsp:include page="../style.jsp" />
 
     </head>
     <body>
@@ -89,7 +89,7 @@
                 </div>
             </div>
         </div>
-        <jsp:include page="script.jsp" />
+        <jsp:include page="../script.jsp" />
 
     </body>
 </html>

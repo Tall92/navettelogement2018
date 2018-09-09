@@ -4,8 +4,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Espace Administrateur</title>
-        <link rel="stylesheet" href="bootstrap-4.1.2/css/bootstrap.min.css" />
-        <link rel="stylesheet" href="css/style.css" />
+        <jsp:include page="../style.jsp" />
 
 
     </head>
@@ -14,5 +13,7 @@
 
             <jsp:include page="menu.jsp" />
             
+        </div>
+            <jsp:include page="../script.jsp" />
     </body>
 </html>

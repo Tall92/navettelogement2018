@@ -20,5 +20,7 @@ public interface ServiceUtilisateur {
     public String activer(int id);
     
     public String desactiver(int id);
+    
+    public Utilisateur connexion(String login, String password);
 
 }

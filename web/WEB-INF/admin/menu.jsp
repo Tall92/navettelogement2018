@@ -34,18 +34,18 @@
             </li>
         </ul>
         
-        <a class="btn btn-dark pull-right" href="controleuradminis?action=admin_logout">Déconnexion</a>
-        <span class="dropdown">
-        <a class="btn btn-dark dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          
-        </a>
-        <div class="dropdown-menu pull-right" aria-labelledby="navbarDropdown">
-          <span class="dropdown-item fa fa-user-circle"> ${admin.prenom} ${admin.nom}</span>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item fa fa-key" href="#">Changer mot de passe</a>
-        </div>
-        </span>
+            <a class="btn btn-dark" href="controleuradminis?action=admin_logout">Déconnexion</a>
+            <span class="dropdown">
+                <a class="btn btn-dark dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                    <span class="dropdown-item fa fa-user-circle"> ${admin.prenom} ${admin.nom}</span>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item fa fa-key" href="#">Changer mot de passe</a>
+                </div>
+            </span>
+        
 
     </div>
 </nav>

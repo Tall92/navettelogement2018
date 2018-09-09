@@ -1,6 +1,7 @@
 package modele;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  *
@@ -19,6 +20,7 @@ public class Utilisateur implements Serializable {
     private String motPasse;
     private String profil;
     private int statut;
+    private List<Formation> formations;
 
     public Utilisateur(){
         
@@ -115,6 +117,14 @@ public class Utilisateur implements Serializable {
 
     public void setStatut(int statut) {
         this.statut = statut;
+    }
+
+    public List<Formation> getFormations() {
+        return formations;
+    }
+
+    public void setFormations(List<Formation> formations) {
+        this.formations = formations;
     }
 
 }

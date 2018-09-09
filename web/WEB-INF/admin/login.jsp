@@ -4,7 +4,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>GESTION_NAVETTE_LOGEMENT</title>
-        <jsp:include page="style.jsp" />
+        <jsp:include page="../style.jsp" />
 
     </head>
     <body>
@@ -33,5 +33,5 @@
             </div>
         </div>
     </body>
-    <jsp:include page="script.jsp" />
+    <jsp:include page="../script.jsp" />
 </html>

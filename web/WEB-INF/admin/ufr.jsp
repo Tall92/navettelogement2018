@@ -5,7 +5,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>UFR</title>
-        <jsp:include page="style.jsp" />
+        <jsp:include page="../style.jsp" />
     </head>
     <body>
         <div id="principal" class="container">
@@ -57,6 +57,6 @@
                 </div>
             </div>
         </div>
-        <jsp:include page="script.jsp" />
+        <jsp:include page="../script.jsp" />
     </body>
 </html>

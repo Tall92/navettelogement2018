@@ -2,6 +2,7 @@ package service;
 
 import java.util.List;
 import modele.Formation;
+import modele.Utilisateur;
 
 /**
  *
@@ -18,5 +19,15 @@ public interface ServiceForm {
     public Formation rechercher(int id);
     
     public String supprimer(int id);
+    
+    public List<Utilisateur> listeEnseignants(int idform);
+    
+    public List<Utilisateur> listeNotInForm(int idform);
+    
+    public String addToForm(int iduser, int idform);
+    
+    public String attribuer(int iduser, int idform);
+    
+    public Formation maFormation(int iduser);
 
 }

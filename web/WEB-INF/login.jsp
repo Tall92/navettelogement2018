@@ -11,7 +11,7 @@
     <body>
         <div class="container">
             <div id="formdiv" class="offset-lg-3 col-lg-6">
-                <form action="controleurutilisateur" method="post">
+                <form action="controleur" method="post">
                     <input type="hidden" name="action" value="Connexion" />
                     <div class="form-group">
                         <label for="exampleInputEmail1">Adresse Mail</label>

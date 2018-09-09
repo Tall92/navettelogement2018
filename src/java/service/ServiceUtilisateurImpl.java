@@ -22,6 +22,7 @@ public class ServiceUtilisateurImpl implements ServiceUtilisateur {
     private static final String SQL_FIND_USER = "SELECT * FROM `utilisateur` us, `ufr` u, `departement` d WHERE us.ID_UFR = u.ID_UFR AND us.ID_DEPT= d.ID_DEPT AND `ID_USER`=?";
     private static final String SQL_ACT = "UPDATE `utilisateur` SET `STATUT`=1 WHERE `ID_USER`=?";
     private static final String SQL_DESACT = "UPDATE `utilisateur` SET `STATUT`=0 WHERE `ID_USER`=?";
+    private static final String SQL_CON = "SELECT * FROM `utilisateur` us, `ufr` u, `departement` d WHERE us.ID_UFR = u.ID_UFR AND us.ID_DEPT= d.ID_DEPT AND `LOGIN` = ? AND `MOT_DE_PASSE` = ? AND `STATUT` = 1";
 
     @Override
     public String ajouterUsers(Utilisateur user) {
@@ -31,7 +32,7 @@ public class ServiceUtilisateurImpl implements ServiceUtilisateur {
         try {
             db = Connexion.getConnection();
             ps = db.prepareStatement(SQL_ADD_USER);
-            
+
             ps.setInt(1, user.getUfr().getIdUfr());
             ps.setInt(2, user.getDept().getIdDept());
             ps.setString(3, user.getPrenom());
@@ -157,7 +158,7 @@ public class ServiceUtilisateurImpl implements ServiceUtilisateur {
         try {
             db = Connexion.getConnection();
             ps = db.prepareStatement(SQL_ACT);
-            
+
             ps.setInt(1, id);
             int statut = ps.executeUpdate();
 
@@ -180,7 +181,7 @@ public class ServiceUtilisateurImpl implements ServiceUtilisateur {
         try {
             db = Connexion.getConnection();
             ps = db.prepareStatement(SQL_DESACT);
-            
+
             ps.setInt(1, id);
             int statut = ps.executeUpdate();
 
@@ -194,6 +195,36 @@ public class ServiceUtilisateurImpl implements ServiceUtilisateur {
         }
         return message;
     }
-    
-    
+
+    @Override
+    public Utilisateur connexion(String login, String password) {
+        Connection db = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        Utilisateur u = null;
+        try {
+            db = Connexion.getConnection();
+            ps = db.prepareStatement(SQL_CON);
+            ps.setString(1, login);
+            ps.setString(2, password);
+            // excution de la requete
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+                u = new Utilisateur();
+                u.setIdUser(rs.getInt("ID_USER"));
+                u.setUfr(new Ufr(rs.getInt("ID_UFR"), rs.getString("NOM_UFR")));
+                u.setDept(new Departement(rs.getInt("ID_DEPT"), rs.getString("NOM_DEPT")));
+                u.setPrenom(rs.getString("PRENOM"));
+                u.setNom(rs.getString("NOM"));
+                u.setAdresse(rs.getString("ADRESSE"));
+                u.setTel(rs.getString("LOGIN"));
+                u.setProfil(rs.getString("PROFIL"));
+
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return u;
+    }
 }

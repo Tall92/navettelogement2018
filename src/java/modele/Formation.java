@@ -1,6 +1,7 @@
 package modele;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  *
@@ -11,6 +12,7 @@ public class Formation implements Serializable {
     private int idForm;
     private String nomForm;
     private Departement dept;
+    private List<Utilisateur> utilisateurs;
     
 
     public Formation() {
@@ -40,8 +42,13 @@ public class Formation implements Serializable {
     public void setDept(Departement dept) {
         this.dept = dept;
     }
-    
 
-    
+    public List<Utilisateur> getUtilisateurs() {
+        return utilisateurs;
+    }
 
+    public void setUtilisateurs(List<Utilisateur> utilisateurs) {
+        this.utilisateurs = utilisateurs;
+    }
+    
 }

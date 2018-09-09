@@ -5,7 +5,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>FORMATION</title>
-        <jsp:include page="style.jsp" />
+        <jsp:include page="../style.jsp" />
     </head>
     <body>
         <div id="principal" class="container">
@@ -22,7 +22,7 @@
                                 <tr>                            
                                     <th>Nom de la Formation</th>
                                     <th>Nom du Département</th>
-                                    <th colspan="2">Action</th>
+                                    <th colspan="3">Action</th>
                                 </tr>
                                 <c:forEach items="${forms}" var="f">
                                     <tr>
@@ -30,6 +30,7 @@
                                         <td><c:out value="${f.dept.nomDept}" /></td>
                                         <td><a class="btn btn-primary" href="controleurformation?action=admin_modifier&idform=${f.idForm}"><i class="fa fa-edit fa-2x"></i></a></td>
                                         <td><a class="btn btn-primary" href="controleurformation?action=admin_supprimer&idform=${f.idForm}"><i class="fa fa-remove fa-2x"></i></a></td>
+                                        <td><a class="btn btn-primary" href="controleurformation?action=admin_forma&idform=${f.idForm}"><i class="fa fa-list fa-2x"></i></a></td>
                                     </tr>
                                 </c:forEach>
                             </table>
@@ -69,7 +70,7 @@
                 </div>
             </div>
         </div>
-        <jsp:include page="script.jsp" />
+        <jsp:include page="../script.jsp" />
     </body>
 </html>
 

@@ -6,7 +6,6 @@
     </filter>
     <filter-mapping>
         <filter-name>AdminRestriction</filter-name>
-        <url-pattern>/controleurufr</url-pattern>
         <url-pattern>/controleurdept</url-pattern>
         <url-pattern>/controleurformation</url-pattern>
         <url-pattern>/controleurutilisateur</url-pattern>
@@ -15,6 +14,7 @@
         <url-pattern>/controleurchambre</url-pattern>
         <url-pattern>/controleurnavette</url-pattern>
         <url-pattern>/controleuradminis</url-pattern>
+        <url-pattern>/controleurufr</url-pattern>
     </filter-mapping>
     <servlet>
         <servlet-name>ControleurAdminis</servlet-name>
@@ -56,13 +56,13 @@
         <servlet-name>ControleurNavette</servlet-name>
         <servlet-class>controleur.ControleurNavette</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Responsable</servlet-name>
+        <servlet-class>controleur.Responsable</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ControleurAdminis</servlet-name>
         <url-pattern>/controleuradminis</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>Controleur</servlet-name>
-        <url-pattern>/controleur</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ControleurUfr</servlet-name>
@@ -96,9 +96,21 @@
         <servlet-name>ControleurNavette</servlet-name>
         <url-pattern>/controleurnavette</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Controleur</servlet-name>
+        <url-pattern>/controleur</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Responsable</servlet-name>
+        <url-pattern>/responsable</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
+    <welcome-file-list>
+        <welcome-file>/controleur</welcome-file>
+        <welcome-file>/</welcome-file>
+    </welcome-file-list>
 </web-app>
