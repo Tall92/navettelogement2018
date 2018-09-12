@@ -1,6 +1,7 @@
 package controleur;
 
 import java.io.IOException;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -74,9 +75,9 @@ public class Controleur extends HttpServlet {
                      
                     if (profil.equals("responsable")) {
                         
-                        Formation f = sf.maFormation(u.getIdUser());
+                        List<Formation> formations = sf.mesFormations(u.getIdUser());
                         
-                        session.setAttribute("maformation", f);
+                        session.setAttribute("mesformations", formations);
                         
                         this.getServletContext().getRequestDispatcher("/WEB-INF/responsable/index.jsp").forward(request, response);
                     } else if (profil.equals("chef_de_departement")) {

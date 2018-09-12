@@ -28,6 +28,7 @@ public interface ServiceForm {
     
     public String attribuer(int iduser, int idform);
     
-    public Formation maFormation(int iduser);
+    public List<Formation> mesFormations(int iduser);
 
+    public List<Utilisateur> listeEnseignantsForm(int idform);
 }

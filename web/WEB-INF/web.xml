@@ -60,6 +60,10 @@
         <servlet-name>Responsable</servlet-name>
         <servlet-class>controleur.Responsable</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ControleurGestionUfr</servlet-name>
+        <servlet-class>controleur.ControleurGestionUfr</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ControleurAdminis</servlet-name>
         <url-pattern>/controleuradminis</url-pattern>
@@ -97,12 +101,16 @@
         <url-pattern>/controleurnavette</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+        <servlet-name>Responsable</servlet-name>
+        <url-pattern>/responsable</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>Controleur</servlet-name>
         <url-pattern>/controleur</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>Responsable</servlet-name>
-        <url-pattern>/responsable</url-pattern>
+        <servlet-name>ControleurGestionUfr</servlet-name>
+        <url-pattern>/gestionnaireufr</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
@@ -110,7 +118,12 @@
         </session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>/controleur</welcome-file>
-        <welcome-file>/</welcome-file>
+        <welcome-file>controleur</welcome-file>
     </welcome-file-list>
+    <jsp-config>
+        <jsp-property-group>
+            <url-pattern>*.jsp</url-pattern>
+            <include-prelude>/WEB-INF/taglibs.jsp</include-prelude>
+        </jsp-property-group>
+    </jsp-config>
 </web-app>

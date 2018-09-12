@@ -1,12 +1,11 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Liste Enseignant de la formation</title>
-        <jsp:include page="../style.jsp" />
-
+        <link rel="stylesheet" href="bootstrap-4.1.2/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="css/style.css" />
+        <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css" />
 
     </head>
     <body>
@@ -73,40 +72,45 @@
                                         </div>
                                         <div class="modal-body">
                                             <div class="container-fluid">
-                                                <div class="row">
-                                                    
-                                                <form action="controleurformation" method="post" class="form-row">
-                                                    <input type="hidden" name="idform" value="${formation.idForm}" />
-                                                    <input type="hidden" name="action" value="admin_addtoform" />
-                                                    <div class="form-group">
-                                                        <label for="professeur">Professeur : </label>
-                                                        <select name="professeur" id="professeur"
-                                                                class="form-control" multiple="multiple">
-                                                            <c:forEach items="${listenotin}" var="n">
-                                                                <option
-                                                                    value="${n.idUser}">${n.prenom} ${n.nom}</option>
-                                                            </c:forEach>
-                                                        </select>
-
-                                                    </div>
-                                                    <button type="submit" class="btn btn-primary">Ajouter</button>
-                                                </form>
+                                                
+                                                <form action="controleurformation" method="post" >
+                                                        <input type="hidden" name="idform" value="${formation.idForm}" />
+                                                        <input type="hidden" name="action" value="admin_addtoform" />
+                                                        
+                                                            <div class="form-group">
+                                                                <label for="professeur">Professeur : </label>
+                                                                <select name="professeur" id="professeur"
+                                                                        class="form-control" multiple="multiple">
+                                                                    <c:forEach items="${listenotin}" var="n">
+                                                                        <option
+                                                                            value="${n.idUser}">${n.prenom} ${n.nom}</option>
+                                                                    </c:forEach>
+                                                                </select>
+                                                                
+                                                            </div>
+                                                        </div>
+                                                        
+                                                        <div class="form-group">
+                                                            <button type="submit" class="pull-right btn btn-primary">Ajouter</button>
+                                                        
+                                                        </div>
+                                                        
+                                                    </form>
+                                                
                                             </div>
+                                            
                                         </div>
-<!--                                        <div class="modal-footer">
-                                            <button type="submit" class="btn btn-primary">Ajouter</button>
-                                        </div>-->
                                     </div>
                                 </div>
                             </div>
                         </div>
+
+
                     </div>
-
-
                 </div>
-            </div>
 
-        </div>
-        <jsp:include page="../script.jsp" />
+            </div>
+            <script src="bootstrap-4.1.2/js/jquery-3.3.1.min.js"></script>
+            <script src="bootstrap-4.1.2/js/bootstrap.min.js"></script>
     </body>
 </html>

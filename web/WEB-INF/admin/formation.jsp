@@ -1,11 +1,11 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>FORMATION</title>
-        <jsp:include page="../style.jsp" />
+        <link rel="stylesheet" href="bootstrap-4.1.2/css/bootstrap.min.css" />
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css" />
     </head>
     <body>
         <div id="principal" class="container">
@@ -21,7 +21,7 @@
                             <table class="table table-bordered table-striped table-hover">
                                 <tr>                            
                                     <th>Nom de la Formation</th>
-                                    <th>Nom du DÃ©partement</th>
+                                    <th>Nom du Département</th>
                                     <th colspan="3">Action</th>
                                 </tr>
                                 <c:forEach items="${forms}" var="f">
@@ -53,7 +53,7 @@
                                     <input type="text" name="nomForm" value="${form.nomForm}" class="form-control" id="form" placeholder="Entrer le nom de Formation">
                                 </div>
                                 <div class="form-group">
-                                    <label for="dept">Nom du DÃ©partement</label>
+                                    <label for="dept">Nom du Département</label>
                                     <select name="dept" class="form-control" id="dept">
                                         <option value="${form.dept.idDept}">${form.dept.nomDept}</option>
                                         <c:forEach items="${depts}" var="d">
@@ -70,7 +70,8 @@
                 </div>
             </div>
         </div>
-        <jsp:include page="../script.jsp" />
+        <script src="bootstrap-4.1.2/js/jquery-3.3.1.min.js"></script>
+<script src="bootstrap-4.1.2/js/bootstrap.min.js"></script>
     </body>
 </html>
 

@@ -1,12 +1,11 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>GESTIONNAIRE</title>
-        <jsp:include page="../style.jsp" />
-
+        <link rel="stylesheet" href="bootstrap-4.1.2/css/bootstrap.min.css" />
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css" />
     </head>
     <body>
         <div id="principal" class="container">
@@ -52,8 +51,8 @@
                                 <input type="hidden" name="action" value="${objet != null ? objet : 'ajouter'}" />
                                 <input type="hidden" name="idGes" value="${gestion.ges}" />
                                 <div class="form-group">
-                                    <label for="prenom">PrÃ©nom</label>
-                                    <input type="text" name="prenom" value="${gestion.prenom}" class="form-control" id="prenom" placeholder="Entrer le prÃ©nom">
+                                    <label for="prenom">Prénom</label>
+                                    <input type="text" name="prenom" value="${gestion.prenom}" class="form-control" id="prenom" placeholder="Entrer le prénom">
 
                                 </div>
 
@@ -64,8 +63,8 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="tele">TÃ©lÃ©phone</label>
-                                    <input type="tel" name="telephone" value="${gestion.tel}" class="form-control" id="tele" placeholder="Entrer le numÃ©ro du tÃ©lÃ©phone">
+                                    <label for="tele">Téléphone</label>
+                                    <input type="tel" name="telephone" value="${gestion.tel}" class="form-control" id="tele" placeholder="Entrer le numéro du téléphone">
 
                                 </div>
 
@@ -81,7 +80,8 @@
                     </div>
                 </div>
             </div>
-            <jsp:include page="../script.jsp" />
+            <script src="bootstrap-4.1.2/js/jquery-3.3.1.min.js"></script>
+<script src="bootstrap-4.1.2/js/bootstrap.min.js"></script>
     </body>
 </html>
 

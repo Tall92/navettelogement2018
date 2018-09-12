@@ -1,11 +1,11 @@
-<%@page contentType="text/html" pageEncoding= "UTF-8"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>SITE</title>
-        <jsp:include page="../style.jsp" />
+        <link rel="stylesheet" href="bootstrap-4.1.2/css/bootstrap.min.css" />
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css" />
     </head>
     <body>
         <div id="principal" class="container">
@@ -19,7 +19,7 @@
                         <div class="card-body table-responsive">
                             <table class="table table-bordered table-striped table-hover">
                                 <tr>                            
-                                    <th>NumÃ©ro du Chambre</th>
+                                    <th>Numéro du Chambre</th>
                                     <th>Nom du Site</th>
                                     <th colspan="2">Action</th>
                                 </tr>
@@ -47,7 +47,7 @@
                                 <input type="hidden" name="action" value="${objet != null ? objet : 'ajouter'}" />
                                 <input type="hidden" name="chambre" value="${chambre.idCh}" />
                                 <div class="form-group">
-                                    <label for="cham">NumÃ©ro de la chambre</label>
+                                    <label for="cham">Numéro de la chambre</label>
                                     <input type="text" name="numero" value="${chambre.numero}" class="form-control" id="cham" placeholder="Entrer le nom du site">
                                 </div>
                                 <div class="form-group">
@@ -68,7 +68,8 @@
                 </div>
             </div>
         </div>
-                            <jsp:include page="../script.jsp" />
+                            <script src="bootstrap-4.1.2/js/jquery-3.3.1.min.js"></script>
+<script src="bootstrap-4.1.2/js/bootstrap.min.js"></script>
     </body>
 </html>
 

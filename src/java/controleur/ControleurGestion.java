@@ -100,6 +100,34 @@ public class ControleurGestion extends HttpServlet {
                 request.setAttribute("gestions", gestions);
 
                 this.getServletContext().getRequestDispatcher("/WEB-INF/admin/gestionnaire.jsp").forward(request, response);
+            } else if (action.equals("modifier")) {
+                
+                String idGesUfr = request.getParameter("idGes");
+
+                int idges = Integer.parseInt(idGesUfr);
+
+                String prenom = request.getParameter("prenom");
+                String nom = request.getParameter("nom");
+                String adresse = request.getParameter("adresse");
+                String telephone = request.getParameter("telephone");
+
+                if (!prenom.equals("") && !nom.equals("") && !adresse.equals("") && !telephone.equals("")) {
+                    Gestionnaire g = new Gestionnaire();
+
+                    g.setGes(idges);
+                    g.setPrenom(prenom);
+                    g.setNom(nom);
+                    g.setAdr(adresse);
+                    g.setTel(telephone);
+
+                    sg.modifierGes(g);
+                }
+
+                List<Gestionnaire> gestions = sg.listeGestion();
+
+                request.setAttribute("gestions", gestions);
+
+                this.getServletContext().getRequestDispatcher("/WEB-INF/admin/gestionnaire.jsp").forward(request, response);
             }
         }
     }

@@ -1,11 +1,11 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Espace Administrateur</title>
-        <jsp:include page="../style.jsp" />
+        <link rel="stylesheet" href="bootstrap-4.1.2/css/bootstrap.min.css" />
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css" />
 
     </head>
     <body>
@@ -20,9 +20,9 @@
                         <div class="card-body table-responsive">
                             <table class="table table-bordered table-striped table-hover">
                                 <tr>
-                                    <th>PrÃ©nom</th>
+                                    <th>Prénom</th>
                                     <th>Nom</th>
-                                    <th>TÃ©lÃ©phone</th>
+                                    <th>Téléphone</th>
                                     <th>Email</th>
                                     <th colspan="2">Action</th>
                                 </tr>
@@ -35,7 +35,7 @@
                                         <td><a title="Modifier" class="btn btn-primary" href="controleuradminis?action=admin_modifier&iduser=${a.idUser}"><i class="fa fa-pencil-square-o fa-2x"></i></a></td>
                                         <td>
                                             <c:if test="${a.statut eq '1'}">
-                                                <a class="btn btn-primary" title="DÃ©sactiver" href="controleuradminis?action=admin_desactiver&iduser=${a.idUser}"><i class="fa fa-toggle-off fa-2x"></i></a>
+                                                <a class="btn btn-primary" title="Désactiver" href="controleuradminis?action=admin_desactiver&iduser=${a.idUser}"><i class="fa fa-toggle-off fa-2x"></i></a>
                                                 </c:if>
 
                                             <c:if test="${a.statut eq '0'}">
@@ -59,8 +59,8 @@
                                 <input type="hidden" name="action" value="${objet != null ? objet : 'ajouter'}" />
                                 <input type="hidden" name="iduser" value="${ad.idUser}" />
                                 <div class="form-group">
-                                    <label for="prenom">PrÃ©nom</label>
-                                    <input type="text" name="prenom" value="${ad.prenom}" class="form-control" id="prenom" placeholder="Entrer le prÃ©nom">
+                                    <label for="prenom">Prénom</label>
+                                    <input type="text" name="prenom" value="${ad.prenom}" class="form-control" id="prenom" placeholder="Entrer le prénom">
 
                                 </div>
 
@@ -71,8 +71,8 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="telephone">TÃ©lÃ©phone</label>
-                                    <input type="tel" name="telephone" value="${ad.telephone}" class="form-control" id="telephone" placeholder="Entrer le numÃ©ro du tÃ©lÃ©phone">
+                                    <label for="telephone">Téléphone</label>
+                                    <input type="tel" name="telephone" value="${ad.telephone}" class="form-control" id="telephone" placeholder="Entrer le numéro du téléphone">
 
                                 </div>
 
@@ -89,7 +89,8 @@
                 </div>
             </div>
         </div>
-        <jsp:include page="../script.jsp" />
+        <script src="bootstrap-4.1.2/js/jquery-3.3.1.min.js"></script>
+<script src="bootstrap-4.1.2/js/bootstrap.min.js"></script>
 
     </body>
 </html>

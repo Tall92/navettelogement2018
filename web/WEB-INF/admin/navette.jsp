@@ -1,11 +1,11 @@
-<%@page contentType="text/html" pageEncoding= "UTF-8"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>NAVETTES</title>
-        <jsp:include page="../style.jsp" />
+        <link rel="stylesheet" href="bootstrap-4.1.2/css/bootstrap.min.css" />
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css" />
     </head>
     <body>
         <div id="principal" class="container">
@@ -48,8 +48,8 @@
                                 <input type="hidden" name="action" value="${objet != null ? objet : 'ajouter'}" />
                                 <input type="hidden" name="nav" value="${navette.idNav}" />
                                 <div class="form-group">
-                                    <label for="matricule">NumÃ©ro de Matricule</label>
-                                    <input type="text" name="matricule" value="${navette.matricule}" class="form-control" id="matricule" placeholder="Entrer le numÃ©ro du matricule">
+                                    <label for="matricule">Numéro de Matricule</label>
+                                    <input type="text" name="matricule" value="${navette.matricule}" class="form-control" id="matricule" placeholder="Entrer le numéro du matricule">
                                 </div>
                                 <div class="form-group">
                                     <label for="place">Nombres de Place</label>
@@ -63,7 +63,8 @@
                 </div>
             </div>
         </div>
-                            <jsp:include page="../script.jsp" />
+                            <script src="bootstrap-4.1.2/js/jquery-3.3.1.min.js"></script>
+<script src="bootstrap-4.1.2/js/bootstrap.min.js"></script>
     </body>
 </html>
 

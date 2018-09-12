@@ -1,12 +1,11 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Liste Enseignant de la formation</title>
-        <jsp:include page="../style.jsp" />
-
+        <link rel="stylesheet" href="bootstrap-4.1.2/css/bootstrap.min.css" />
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css" />
 
     </head>
     <body>
@@ -43,10 +42,10 @@
                                         <td><c:out value="${e.dept.nomDept}" /></td>
                                         <td><c:out value="${e.profil}" /></td>
                                         <td>
-                                            <a class="btn btn-primary" href="responsable?action=reserver_navette&iduser=${e.idUser}">RÃ©server Navette</a>
+                                            <a class="btn btn-primary" href="responsable?action=reserver_navette&iduser=${e.idUser}">Réserver Navette</a>
                                         </td>
                                         <td>
-                                            <a class="btn btn-primary" href="responsable?action=reserver_logement&iduser=${e.idUser}">RÃ©server Logement</a>
+                                            <a class="btn btn-primary" href="responsable?action=reserver_logement&iduser=${e.idUser}">Réserver Logement</a>
                                         </td>
                                     </tr>
                                 </c:forEach>
@@ -57,6 +56,7 @@
             </div>
 
         </div>
-        <jsp:include page="../script.jsp" />
+        <script src="bootstrap-4.1.2/js/jquery-3.3.1.min.js"></script>
+<script src="bootstrap-4.1.2/js/bootstrap.min.js"></script>
     </body>
 </html>

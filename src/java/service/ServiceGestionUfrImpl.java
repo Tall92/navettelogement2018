@@ -6,33 +6,35 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import modele.Gestionnaire;
+import modele.GestionnaireUfr;
+import modele.Ufr;
 
 /**
  *
  * @author tall
  */
-public class ServiceGestionImpl implements ServiceGestionnaire {
+public class ServiceGestionUfrImpl implements ServiceGestionnaireUfr {
 
-    private static final String SQL_ADD_GES = "INSERT INTO `gestionnaire`( `PRENOM`, `NOM`, `ADRESSE`, `TELEPHONE`) VALUES (?, ?, ?, ?)";
-    private static final String SQL_MOD_GES = "UPDATE `gestionnaire` SET `PRENOM`=?,`NOM`=?, `TELEPHONE` = ?,`ADRESSE`=? WHERE `ID_GEST`=?";
-    private static final String SQL_LIST_GES = "SELECT * FROM `gestionnaire` ";
-    private static final String SQL_FIND_GES = "SELECT * FROM `gestionnaire` WHERE `ID_GEST` = ?";
-    private static final String SQL_DEL_GES = "DELETE FROM `gestionnaire` WHERE `ID_GEST` = ?";
+    private static final String SQL_ADD_GES = "INSERT INTO `gestionnaireufr`( `ID_UFR`,`PRENOM`, `NOM`, `TELEPHONE`, `LOGIN`, `MOT_DE_PASSE`, `STATUT`) VALUES (?, ?, ?, ?, ?, 'logement' , 1)";
+    private static final String SQL_MOD_GES = "UPDATE `gestionnaireufr` SET `ID_UFR`=?, `PRENOM`=?,`NOM`=?,`TELEPHONE`=?, `LOGIN`= ? WHERE `ID_GES_UFR`=?";
+    private static final String SQL_LIST_GES = "SELECT * FROM `gestionnaireufr` gr, `ufr` u WHERE gr.`ID_UFR` = u.`ID_UFR`";
+    private static final String SQL_FIND_GES = "SELECT * FROM `gestionnaireufr` gr, `ufr` u WHERE gr.`ID_UFR` = u.`ID_UFR` AND `ID_GES_UFR` = ?";
+    private static final String SQL_DEL_GES = "DELETE FROM `gestionnaireufr` WHERE `ID_GES_UFR` = ?";
 
     @Override
-    public String ajouterGes(Gestionnaire gess) {
+    public String ajouterGes(GestionnaireUfr gess) {
         Connection db = null;
         PreparedStatement ps = null;
         String message = null;
         try {
             db = Connexion.getConnection();
             ps = db.prepareStatement(SQL_ADD_GES);
-            ps.setString(1, gess.getPrenom());
-            ps.setString(2, gess.getNom());
-            ps.setString(4, gess.getAdr());
-            ps.setString(3, gess.getTel());
-
+            ps.setInt(1, gess.getUfr().getIdUfr());
+            ps.setString(2, gess.getPrenom());
+            ps.setString(3, gess.getNom());
+            ps.setString(4, gess.getTelephone());
+            ps.setString(5, gess.getLogin());
+            
             int statut = ps.executeUpdate();
 
             if (statut == 1) {
@@ -47,18 +49,19 @@ public class ServiceGestionImpl implements ServiceGestionnaire {
     }
 
     @Override
-    public String modifierGes(Gestionnaire gess) {
+    public String modifierGes(GestionnaireUfr gess) {
         Connection db = null;
         PreparedStatement ps = null;
         String message = null;
         try {
             db = Connexion.getConnection();
             ps = db.prepareStatement(SQL_MOD_GES);
-            ps.setString(1, gess.getPrenom());
-            ps.setString(2, gess.getNom());
-            ps.setString(3, gess.getTel());
-            ps.setString(4, gess.getAdr());
-            ps.setInt(5, gess.getGes());
+            ps.setInt(1, gess.getUfr().getIdUfr());
+            ps.setString(2, gess.getPrenom());
+            ps.setString(3, gess.getNom());
+            ps.setString(4, gess.getTelephone());
+            ps.setString(5, gess.getLogin());
+            ps.setInt(6, gess.getIdGesUfr());
 
             int statut = ps.executeUpdate();
 
@@ -75,39 +78,39 @@ public class ServiceGestionImpl implements ServiceGestionnaire {
     }
 
     @Override
-    public List<Gestionnaire> listeGestion() {
+    public List<GestionnaireUfr> listeGestion() {
 
         Connection db = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
-        List<Gestionnaire> gestion = new ArrayList<>();
+        List<GestionnaireUfr> gestion = new ArrayList<>();
         try {
             db = Connexion.getConnection();
             ps = db.prepareStatement(SQL_LIST_GES);
             rs = ps.executeQuery();
             while (rs.next()) {
-                Gestionnaire gest = new Gestionnaire();
-                gest.setGes(rs.getInt("ID_GEST"));
+                GestionnaireUfr gest = new GestionnaireUfr();
+                gest.setIdGesUfr(rs.getInt("ID_GES_UFR"));
+                gest.setUfr(new Ufr(rs.getInt("ID_UFR"), rs.getString("NOM_UFR")));
                 gest.setPrenom(rs.getString("PRENOM"));
                 gest.setNom(rs.getString("NOM"));
-                gest.setAdr(rs.getString("ADRESSE"));
-                gest.setTel(rs.getString("TELEPHONE"));
+                gest.setTelephone(rs.getString("TELEPHONE"));
+                gest.setLogin(rs.getString("LOGIN"));
 
                 gestion.add(gest);
             }
 
         } catch (SQLException e) {
-            e.printStackTrace();
         }
         return gestion;
     }
 
     @Override
-    public Gestionnaire rechercherGestion(int ges) {
+    public GestionnaireUfr rechercherGestion(int ges) {
         Connection db = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
-        Gestionnaire gestion = null;
+        GestionnaireUfr gestion = null;
         try {
             db = Connexion.getConnection();
             ps = db.prepareStatement(SQL_FIND_GES);
@@ -115,12 +118,13 @@ public class ServiceGestionImpl implements ServiceGestionnaire {
             // excution de la requete
             rs = ps.executeQuery();
             if (rs.next()) {
-                gestion = new Gestionnaire();
-                gestion.setGes(rs.getInt("ID_GEST"));
+                gestion = new GestionnaireUfr();
+                gestion.setIdGesUfr(rs.getInt("ID_GES_UFR"));
+                gestion.setUfr(new Ufr(rs.getInt("ID_UFR"), rs.getString("NOM_UFR")));
                 gestion.setPrenom(rs.getString("PRENOM"));
                 gestion.setNom(rs.getString("NOM"));
-                gestion.setAdr(rs.getString("ADRESSE"));
-                gestion.setTel(rs.getString("TELEPHONE"));
+                gestion.setTelephone(rs.getString("TELEPHONE"));
+                gestion.setLogin(rs.getString("LOGIN"));
 
             }
         } catch (SQLException e) {
@@ -152,8 +156,4 @@ public class ServiceGestionImpl implements ServiceGestionnaire {
         return message;
     }
     
-    
-
 }
-
-

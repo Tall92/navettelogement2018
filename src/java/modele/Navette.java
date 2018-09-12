@@ -16,8 +16,18 @@ public class Navette {
 
     public Navette() {
     }
+    
+    public Navette(int idNav) {
+        this.idNav = idNav;
+    }
 
     public Navette(String matricule, int nbPlace) {
+        this.matricule = matricule;
+        this.nbPlace = nbPlace;
+    }
+
+    public Navette(int idNav, String matricule, int nbPlace) {
+        this.idNav = idNav;
         this.matricule = matricule;
         this.nbPlace = nbPlace;
     }

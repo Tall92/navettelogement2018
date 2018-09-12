@@ -37,23 +37,28 @@ public class AdminRestriction implements Filter {
         HttpServletResponse response = (HttpServletResponse) res;
         HttpSession session = request.getSession();
         String chemin = request.getRequestURI().substring(request.getContextPath().length());
+        
         if (chemin.startsWith("/bootstrap-4.1.2") || chemin.startsWith("/css") || chemin.startsWith("/font-awesome-4.7.0")) {
             chain.doFilter(request, response);
             return;
         }
 
         String query = request.getQueryString();
-          
+
         if (query != null) {
 
             if (session.getAttribute(ATT_SES) == null) {
                 session.invalidate();
                 response.sendRedirect(request.getContextPath() + ATT_CON);
                 return;
-                
+
+            }
+        } else {
+            if (chemin.startsWith("/bootstrap-4.1.2") || chemin.startsWith("/css") || chemin.startsWith("/font-awesome-4.7.0")) {
+                chain.doFilter(request, response);
+                return;
             }
         }
-
 
         if (session.getAttribute(ATT_SES) == null) {
             session.invalidate();

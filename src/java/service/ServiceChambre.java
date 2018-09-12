@@ -7,6 +7,7 @@ package service;
 
 import java.util.List;
 import modele.Chambre;
+import modele.ReserveLogement;
 
 /**
  *
@@ -23,5 +24,11 @@ public interface ServiceChambre {
     public Chambre rechercher(int id);
     
     public String supprimer(int id);
+    
+    public List<Chambre> listeSiteChambres(int idSite);
+    
+    public String ajouterReservation(ReserveLogement rl);
+    
+    public List<ReserveLogement> listeReserveLogements();
 
 }
