@@ -98,14 +98,14 @@ public class Responsable extends HttpServlet {
             request.setAttribute("ens", u);
 
             this.getServletContext().getRequestDispatcher("/WEB-INF/responsable/reserverlogement.jsp").forward(request, response);
-        }else if (action.equals("res_navette")) {
+        } else if (action.equals("res_navette")) {
 
             List<ReserveNavette> rns = sn.listeReserveNavettes();
 
             request.setAttribute("rns", rns);
 
             this.getServletContext().getRequestDispatcher("/WEB-INF/responsable/listereservenavette.jsp").forward(request, response);
-        }else if (action.equals("res_logement")) {
+        } else if (action.equals("res_logement")) {
 
             List<ReserveLogement> rnl = sc.listeReserveLogements();
 
@@ -131,6 +131,25 @@ public class Responsable extends HttpServlet {
             request.setAttribute("rns", rns);
 
             this.getServletContext().getRequestDispatcher("/WEB-INF/responsable/listereservenavette.jsp").forward(request, response);
+        } else if (action.equals("annuler_res_log")) {
+
+            String iduser = request.getParameter("iduser");
+            String idcham = request.getParameter("idcham");
+
+            int idU = Integer.parseInt(iduser);
+
+            int idC = Integer.parseInt(idcham);
+
+            String entree = request.getParameter("entree");
+            String sortie = request.getParameter("sortie");
+
+            String message = sc.annulerReservation(idU, idC, entree, sortie);
+            
+            List<ReserveLogement> rnl = sc.listeReserveLogements();
+
+            request.setAttribute("rnl", rnl);
+
+            this.getServletContext().getRequestDispatcher("/WEB-INF/responsable/listereservelogement.jsp").forward(request, response);
         }
     }
 

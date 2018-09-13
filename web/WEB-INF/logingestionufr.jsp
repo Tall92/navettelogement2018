@@ -11,7 +11,10 @@
     <body>
         <div class="container">
             <div id="formdiv" class="offset-lg-3 col-lg-6">
-                <form action="controleur" method="post">
+                <div class="card border-primary">
+                    <div class="card-header bg-primary">Connexion</div>
+                    <div class="card-body">
+                <form action="gestionufr" method="post">
                     <input type="hidden" name="action" value="Connexion" />
                     <div class="form-group">
                         <label for="exampleInputEmail1">Adresse Mail</label>
@@ -25,6 +28,8 @@
 
                     <button type="submit" class="btn btn-primary">Connexion</button>
                 </form>
+                    </div>
+                </div>
             </div>
         </div>
         <script src="bootstrap-4.1.2/js/jquery-3.3.1.min.js"></script>

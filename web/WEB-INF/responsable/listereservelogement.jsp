@@ -3,7 +3,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Réservation Navette</title>
+        <title>Réservation Logement</title>
         <link rel="stylesheet" href="bootstrap-4.1.2/css/bootstrap.min.css" />
         <link rel="stylesheet" href="css/style.css" />
         <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css" />
@@ -54,7 +54,7 @@
                                             </c:if>
                                         </td>
                                         <td>
-                                            
+                                            <a class="btn btn-primary" href="responsable?action=annuler_res_log&iduser=${e.utilisateur.idUser}&idcham=${e.chambre.idCh}&entree=<fmt:formatDate type="date" pattern="yyyy-MM-dd" value="${e.entree}" />&sortie=<fmt:formatDate type="date" pattern="yyyy-MM-dd" value="${e.sortie}" />">Annuler</a>
                                         </td>
 
                                     </tr>

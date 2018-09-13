@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Espace Responsable</title>
+        <title>Espace Gestionnaire UFR</title>
         <link rel="stylesheet" href="bootstrap-4.1.2/css/bootstrap.min.css" />
 <link rel="stylesheet" href="css/style.css" />
 <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css" />
@@ -10,7 +10,7 @@
     <body>
         <div id="principal" class="container">
 
-            <jsp:include page="menures.jsp" />
+            <jsp:include page="menu.jsp" />
             
         </div>
             <script src="bootstrap-4.1.2/js/jquery-3.3.1.min.js"></script>

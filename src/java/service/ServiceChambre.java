@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package service;
 
 import java.util.List;
@@ -30,5 +25,11 @@ public interface ServiceChambre {
     public String ajouterReservation(ReserveLogement rl);
     
     public List<ReserveLogement> listeReserveLogements();
+    
+    public List<ReserveLogement> listeReserveLogementsUfr(int idUfr);
+    
+    public String annulerReservation(int idUser, int idCh, String entree, String sortie);
+    
+    public String validerReservation(int idUser, int idCh, String entree, String sortie);
 
 }

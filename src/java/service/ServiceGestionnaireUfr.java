@@ -18,5 +18,7 @@ public interface ServiceGestionnaireUfr {
     public GestionnaireUfr rechercherGestion(int Ges);
 
     public String supprimer(int id);
+    
+    public GestionnaireUfr connexion(String login, String password);
 
 }

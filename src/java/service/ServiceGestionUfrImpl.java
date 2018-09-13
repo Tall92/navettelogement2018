@@ -20,6 +20,7 @@ public class ServiceGestionUfrImpl implements ServiceGestionnaireUfr {
     private static final String SQL_LIST_GES = "SELECT * FROM `gestionnaireufr` gr, `ufr` u WHERE gr.`ID_UFR` = u.`ID_UFR`";
     private static final String SQL_FIND_GES = "SELECT * FROM `gestionnaireufr` gr, `ufr` u WHERE gr.`ID_UFR` = u.`ID_UFR` AND `ID_GES_UFR` = ?";
     private static final String SQL_DEL_GES = "DELETE FROM `gestionnaireufr` WHERE `ID_GES_UFR` = ?";
+    private static final String SQL_CON = "SELECT * FROM `gestionnaireufr` gr, `ufr` u WHERE gr.`ID_UFR` = u.`ID_UFR` AND `LOGIN` = ? AND `MOT_DE_PASSE` = ? AND `STATUT` = 1";
 
     @Override
     public String ajouterGes(GestionnaireUfr gess) {
@@ -156,4 +157,34 @@ public class ServiceGestionUfrImpl implements ServiceGestionnaireUfr {
         return message;
     }
     
+    @Override
+    public GestionnaireUfr connexion(String login, String password) {
+
+        Connection db = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        GestionnaireUfr a = null;
+        try {
+            db = Connexion.getConnection();
+            ps = db.prepareStatement(SQL_CON);
+            ps.setString(1, login);
+            ps.setString(2, password);
+            // excution de la requete
+            rs = ps.executeQuery();
+            
+            if (rs.next()) {
+                a = new GestionnaireUfr();
+                a.setIdGesUfr(rs.getInt("id_ges_ufr"));
+                a.setUfr(new Ufr(rs.getInt("ID_UFR"), rs.getString("NOM_UFR")));
+                a.setPrenom(rs.getString("prenom"));
+                a.setNom(rs.getString("nom"));
+                a.setTelephone(rs.getString("telephone"));
+                a.setLogin(rs.getString("login"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return a;
+
+    }
 }

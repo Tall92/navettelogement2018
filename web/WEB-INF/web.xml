@@ -4,6 +4,14 @@
         <filter-name>AdminRestriction</filter-name>
         <filter-class>filter.AdminRestriction</filter-class>
     </filter>
+    <filter>
+        <filter-name>ResponsableRestriction</filter-name>
+        <filter-class>filter.ResponsableRestriction</filter-class>
+    </filter>
+    <filter>
+        <filter-name>GestionRestriction</filter-name>
+        <filter-class>filter.GestionRestriction</filter-class>
+    </filter>
     <filter-mapping>
         <filter-name>AdminRestriction</filter-name>
         <url-pattern>/controleurdept</url-pattern>
@@ -15,6 +23,14 @@
         <url-pattern>/controleurnavette</url-pattern>
         <url-pattern>/controleuradminis</url-pattern>
         <url-pattern>/controleurufr</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>ResponsableRestriction</filter-name>
+        <url-pattern>/responsable</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>GestionRestriction</filter-name>
+        <url-pattern>/gestionnaire</url-pattern>
     </filter-mapping>
     <servlet>
         <servlet-name>ControleurAdminis</servlet-name>
@@ -64,6 +80,14 @@
         <servlet-name>ControleurGestionUfr</servlet-name>
         <servlet-class>controleur.ControleurGestionUfr</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>GestionUfr</servlet-name>
+        <servlet-class>controleur.GestionUfr</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Gestionnaire</servlet-name>
+        <servlet-class>controleur.Gestionnaire</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ControleurAdminis</servlet-name>
         <url-pattern>/controleuradminis</url-pattern>
@@ -111,6 +135,14 @@
     <servlet-mapping>
         <servlet-name>ControleurGestionUfr</servlet-name>
         <url-pattern>/gestionnaireufr</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GestionUfr</servlet-name>
+        <url-pattern>/gestionufr</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Gestionnaire</servlet-name>
+        <url-pattern>/gestionnaire</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
